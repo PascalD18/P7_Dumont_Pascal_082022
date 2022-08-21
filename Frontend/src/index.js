@@ -1,11 +1,17 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import './styles/index.css'
-import App from './components/App'
+//import './styles/index.css'
+import AppTest from './components/AppTest'
+//import PersonneList from '.components/PersonneList'
+
+
 
 ReactDOM.render(
 	<React.StrictMode>
-		<App />
+		<AppTest/>
+		
+
 	</React.StrictMode>,
 	document.getElementById('root')
 )
+

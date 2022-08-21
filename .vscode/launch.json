@@ -5,12 +5,21 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Backend",
+            "program": "${workspaceFolder}/backend/app.js",
+            "request": "launch",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "type": "node"
+        },
+        {
             "name": "FL-Firefox",
             "request": "launch",
             "reAttach": true,
             "type": "firefox",
             "url": "http://localhost:3000",
-            "webRoot": "${workspaceFolder}/index.js"
+            "webRoot": "${workspaceFolder}/index.js",
         },
         {
             "name": "FL-Chorme",
