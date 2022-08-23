@@ -1,4 +1,4 @@
-const Sauce = require('../models/Sauce');
+const Sauce = require('../models/Sauce_old');
 const fs = require('fs');
 
 
@@ -11,8 +11,9 @@ exports.createSauce = (req, res) => {
   // Création du formulaire de la sauce dans l'objet 'sauce'
   const sauce = new Sauce({
     ...sauceObject,
-    userId: req.auth.userId,
-    imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
+    userId: req.userId,
+    name:req.name
+    //imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
   });
 
   // Enregistrement du formulaire de la sauce

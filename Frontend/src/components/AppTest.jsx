@@ -1,20 +1,25 @@
-import React, { Component } from 'react'
+import React from 'react'
 //import { Container } from 'reactstrap'
-import FunctionBasedForm from '../pages/FunctionBasedForm'
-import ReqGet from './ReqGet'
+//import FunctionBasedForm from '../pages/FunctionBasedForm'
+import {BrowserRouter as Router, Route} from 'react-router-dom'
+import EnvoiApi from './EnvoiApi'
+//import ReqGet from './ReqGet'
 
 
-class AppTest extends Component {
-  render() {
+function AppTest (){
+
     return (
       <div >
-          <FunctionBasedForm/>
-          <ReqGet/>
+          <Router>
+
+            <Route path="/" exact component={EnvoiApi}></Route>
+          </Router>
+          
          
 
       </div>
     )
   }
-}
+
 
 export default AppTest
