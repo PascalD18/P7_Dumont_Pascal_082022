@@ -2,7 +2,7 @@ import axios from "axios";
 import React from "react";
 import { useEffect, useState } from 'react'
 
-const baseURL = `http://localhost:3001/api/sauces/`
+const baseURL = `http://localhost:3001/api/sauces`
 
 
 //const id = '62ea4822d6c934e7a4859f53'
