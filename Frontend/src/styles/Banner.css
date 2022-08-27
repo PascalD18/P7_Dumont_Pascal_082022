@@ -1,19 +1,19 @@
-lmj-banner {
+.login {
 	color: black;
-	text-align: right;
-	padding: 32px;
+	/*text-align: right;*/
+	padding: 12px;
 	border-bottom: solid 3px black;
 	display: flex;
-	justify-content: flex-end;
+	justify-content: center;
 	flex-direction: row;
 	align-items: center;
 }
 
-.lmj-title {
+.title {
 	padding-left: 32px;
 }
 
-.lmj-logo {
-	height: 45px;
-	width: 45px;
+.logo {
+	height: 80px;
+	width: 150px;
 }

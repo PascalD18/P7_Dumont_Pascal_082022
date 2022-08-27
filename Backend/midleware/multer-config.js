@@ -16,7 +16,7 @@ const storage = multer.diskStorage({
   filename: (req, file, callback) => {
     const name1 = file.originalname.split(' ').join('_');
     const extension = MIME_TYPES[file.mimetype];
-    name2 = name1.replace('.' + extension, '_');
+    const name2 = name1.replace('.' + extension, '_');
 
     // Telechargement de l'image en lui attribuant un nom unique
     callback(null, name2 + Date.now() + '.' + extension);

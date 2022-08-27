@@ -3,7 +3,7 @@ const helmet = require('helmet');
 const mongoose = require('mongoose');
 const path = require('path');
 require('dotenv').config();
-const saucesRoutes = require('./routes/sauce');
+const posteRoutes = require('./routes/poste');
 const userRoutes = require('./routes/user');
 const app = express();
 app.use(express.json());
@@ -20,7 +20,7 @@ app.use((req,res, next) => {
 });
 
 // Connexion de la base de données 'mongoose' - Projet P7 - Clusterdp18
-mongoose.connect('mongodb+srv://Dpascal18-3:Mdpmondodbdpascal18-32022@cluster0.kxppj7d.mongodb.net/?retryWrites=true&w=majority',
+mongoose.connect('mongodb+srv://Dpascal18-1:Mdpmondodbdpascal18-1-2022@clusterdp18.hy52wqp.mongodb.net/?retryWrites=true&w=majority',
 
 // Connexion de la base de données 'mongoose' - Projet PASCAL DUMONT 18 - Clusterdp18
 //mongoose.connect('mongodb+srv://Dpascal18-2:Mdpmondodbdpascal18-22022@cluster0.tqjqjtr.mongodb.net/?retryWrites=true&w=majority',
@@ -35,7 +35,7 @@ mongoose.connect('mongodb+srv://Dpascal18-3:Mdpmondodbdpascal18-32022@cluster0.k
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
 // Définition des accés racine pour les routes Sauces et utilisateurs
-app.use('/api/sauces', saucesRoutes);
+app.use('/api/postes', posteRoutes);
 app.use('/api/auth', userRoutes);
 
 module.exports = app;
