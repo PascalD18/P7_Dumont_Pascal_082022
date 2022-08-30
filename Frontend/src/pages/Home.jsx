@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import '../styles/Banner.css'
+import '../styles/Home.css'
 //import Banner from '../components/Banner'
 
 
@@ -9,15 +9,18 @@ const Home = () => {
 
 
     return (
-        <div>
+        <div className="login">
             
-            <nav>
+            <nav >
+                <div className="title">
                 <Link to="/Connexion/signup">Inscription</Link>
                 <Link to="/Connexion/login">Connexion</Link>
-                <Link to="/Postes">Postes</Link>
+                </div>
+
             </nav>
         </div>
     )
 }
 
 export default Home
+ //               <Link to="/Postes">Postes</Link>

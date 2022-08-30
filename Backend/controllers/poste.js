@@ -22,7 +22,7 @@ exports.createPoste = (req, res) => {
     userId: req.auth.userId,
 
      // Version P6 d'origine
-     imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
+     //imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
     
      //Version Talend API pour * seulement indiquer l'image dans le formulaire *
      //imageUrl:posteObject.imageUrl
@@ -49,9 +49,9 @@ exports.modifyPoste = (req, res) => {
 
 
   //Vérifie si l'utilisateur corresponds à la requéte
-  //if (req.body.userId != req.auth.userId) {
-  //  res.status(401).json({ message: 'Not authorized' });
-  //} else {
+  if (req.body.userId != req.auth.userId) {
+    res.status(401).json({ message: 'Not authorized' });
+  } else {
 
     // Si oui, et si une image a été selectionnée ( ou même reselectionnée !)
     if (req.file !== undefined) {
@@ -75,19 +75,17 @@ exports.modifyPoste = (req, res) => {
     Poste.updateOne({ _id: req.params.id }, { ...posteObject, _id: req.params.id })
       .then(() => res.status(200).json({ message: 'Poste modifiée!' }))
       .catch(error => res.status(401).json({ error }))
-  //}
+  }
 
 };
 exports.likedNoLiked = (req, res) => {
   Poste.findOne({ _id: req.params.id })
     .then(poste => {
-      if (req.body.like == 1 ) {
-      // ok = if (req.body.like == 1 && !poste.usersLiked.includes(req.auth.userId)) {
+      if (req.body.like == 1 && !poste.usersLiked.includes(req.auth.userId)) {
 
         // Si l'utilisateur authentifié n'est pas contenu dans tableau 'usersLiked'
         // Et si like = 1 => Incrémente likes et ajoute l'utilisateur dans tableau 'usersLiked'
-        Poste.updateOne({ _id: req.params.id }, { $inc: { likes: 1 }, $push: { usersLiked: req.body.userId } })
-        // ok = Poste.updateOne({ _id: req.params.id }, { $inc: { likes: 1 }, $push: { usersLiked: req.auth.userId } })
+        Poste.updateOne({ _id: req.params.id }, { $inc: { likes: 1 }, $push: { usersLiked: req.auth.userId } })
           .then(() => res.status(200).json({ message: "Incremente likes et ajoute un utilisateur qui aime !" }))
           .catch(error => res.status(400).json({ error }))
       } else if (req.body.like == -1 && !poste.usersDisliked.includes(req.auth.userId)) {
