@@ -1,19 +1,49 @@
-.login {
+.banner_sect {
 	color: black;
-	/*text-align: right;*/
 	padding: 12px;
 	border-bottom: solid 3px black;
 	display: flex;
 	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	background-color: rgb(179, 205, 50);
+}
+
+.banner_logo {
+	/*object-fit:cover;*/
+	height: 100px;
+	width: 500px;
+}
+.banner_title {
+	position:relative;
+	bottom:-60px;
+	text-decoration: none;
+	color: red;
+}
+.banner_grp_link{
+	position:relative;
+	bottom:0px;
+	background-color:grey;
+	width:100%;
+	display: flex;
+	justify-content:space-between;
+}
+
+.banner_grp_link_cont {
+	/*position: relative;
+	bottom: 0px;*/
+	display: flex;
+	justify-content: center;
 	flex-direction: row;
 	align-items: center;
+	width: cover;
+	height: 50px;
+	background-color: yellow;
+	margin:10,0,10,0 px;
 }
-
-.title {
-	padding-left: 32px;
+.banner_display_link{
+	display:initial;
 }
-
-.logo {
-	height: 80px;
-	width: 150px;
+.banner_no_display_link{
+	display:none;
 }

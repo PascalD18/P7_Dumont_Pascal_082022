@@ -1,16 +1,13 @@
 import React, { useState } from 'react'
-//import { useParams } from 'react-router-dom'
 import axios from 'axios'
-//import { useHistory } from 'react-router-dom'
-//import {Redirect} from 'react-router'
-//import {browserHistory} from 'react-router'
-//import Postes from '../pages/Postes'
-//import Banner from './Banner';
+import Banner from './Banner'
 
-
-function ConnectForm() {
+function ConnectSignup() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  // État de navigation transmit au module 'Banner', pour le paramétrage de la mise en forme de ses liens
+  sessionStorage.setItem('stateNav',"Inscription")
   const handleSubmit = (e) => {
     e.preventDefault()
 
@@ -41,8 +38,8 @@ function ConnectForm() {
   }
   return (
     <div>
+      <div><Banner /></div>
 
-        <p>INSCRIPTION</p>
 
       <label htmlFor="exampleEmail" >Email</label>
       <input className="login"
@@ -66,4 +63,4 @@ function ConnectForm() {
     </div>
   )
 }
-export default ConnectForm
+export default ConnectSignup

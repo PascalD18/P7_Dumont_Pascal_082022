@@ -3,10 +3,14 @@ const helmet = require('helmet');
 const mongoose = require('mongoose');
 const path = require('path');
 require('dotenv').config();
-const posteRoutes = require('./routes/poste');
+const postRoutes = require('./routes/post');
 const userRoutes = require('./routes/user');
 const app = express();
 app.use(express.json());
+
+const cors =require('cors')
+app.use(cors())
+
 app.use(helmet({
   crossOrigineResourcePolicy: false,
 }));
@@ -35,7 +39,7 @@ mongoose.connect('mongodb+srv://Dpascal18-1:Mdpmondodbdpascal18-1-2022@clusterdp
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
 // Définition des accés racine pour les routes Sauces et utilisateurs
-app.use('/api/postes', posteRoutes);
+app.use('/api/posts', postRoutes);
 app.use('/api/auth', userRoutes);
 
 module.exports = app;

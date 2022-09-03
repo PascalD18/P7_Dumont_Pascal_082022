@@ -1,26 +1,14 @@
-import { Link } from 'react-router-dom'
-import '../styles/Home.css'
-//import Banner from '../components/Banner'
+import Banner from '../components/Banner'
 
-
+//import AddEventListener from '../components/AddEventListener'
 
 // Aussi sous forme de fonction, on a : function Banner() {
 const Home = () => {
-
-
-    return (
-        <div className="login">
-            
-            <nav >
-                <div className="title">
-                <Link to="/Connexion/signup">Inscription</Link>
-                <Link to="/Connexion/login">Connexion</Link>
-                </div>
-
-            </nav>
+    sessionStorage.setItem('stateNav',"Home")
+    return ( 
+        <div>
+            <Banner />
         </div>
     )
 }
-
 export default Home
- //               <Link to="/Postes">Postes</Link>

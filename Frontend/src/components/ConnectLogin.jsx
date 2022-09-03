@@ -1,22 +1,21 @@
 import React, { useState } from 'react'
-//import {useNavigate} from 'react-router-dom'
-//import { useParams } from 'react-router-dom'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
+import Banner from '../components/Banner'
 
-function ConnectForm() {
+function ConnectLogin() {
+  const navigate = useNavigate()
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  
+  // État de navigation transmit au module 'Banner', pour le paramétrage de la mise en forme de ses liens
+  sessionStorage.setItem('stateNav',"Connexion")
+
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    // Initialisation de l'entête de la requête
-    const headers = {
-      "Accept": `application/json`,
-      "Accept-Language": `fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3`,
-      "Content-type": `application/json; charset=utf-8`
-    }
     const baseUrlBack = sessionStorage.getItem("baseUrlBack");
-    const baseUrl = `${baseUrlBack}/auth/login`
+    const baseUrl = `${baseUrlBack}auth/login`
 
     const obj = {
       email: email,
@@ -24,48 +23,52 @@ function ConnectForm() {
     }
     axios({
       method: 'post',
-      headers: headers,
       url: baseUrl,
       data: obj
     })
+      //       axios.post(baseUrl,obj)
+
       .then((res) => {
         localStorage.setItem('token', res.data.token)
-        localStorage.setItem('userId', JSON.stringify(res.data.userId))
+        localStorage.setItem('userId', res.data.userId)
         if (res.request.status === 200) {
           alert("Utilisateur logé")
         }
-        window.location.replace('http://localhost:3000/Postes')
+
+        navigate('/AllPosts')
       })
       .catch((err) => {
         //console.log(err) 
-        alert(err.response.data.error)
+        alert(err)
 
       })
 
   }
   return (
     <div>
-      <p>CONNEXION</p>
-      <label htmlFor="exampleEmail" >Email</label>
-      <input className="login"
-        type="email"
-        name="email"
-        id="exampleEmail"
-        placeholder="email"
-        value={email}
-        onChange={event => { setEmail(event.target.value) }} />
-      <label htmlFor="examplePassword">Password</label>
-      <input
-        type="password"
-        name="password"
-        id="examplePassword"
-        placeholder="password"
-        value={password}
-        onChange={event => setPassword(event.target.value)}
-      />
-      <button onClick={handleSubmit}>Submit</button>
+      <div><Banner /></div>
+      <div>
+        <label htmlFor="saisieEmail" >Email</label>
+        <input className="login"
+          type="email"
+          name="email"
+          id="email"
+          placeholder="email"
+          value={email}
+          onChange={event => { setEmail(event.target.value) }} />
+        <label htmlFor="saisiePassword">Password</label>
+        <input
+          type="password"
+          name="password"
+          id="password"
+          placeholder="password"
+          value={password}
+          onChange={event => setPassword(event.target.value)}
+        />
+        <button onClick={handleSubmit}>Valider</button>
 
+      </div>
     </div>
   )
 }
-export default ConnectForm
+export default ConnectLogin

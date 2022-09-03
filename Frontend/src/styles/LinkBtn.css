@@ -1,0 +1,24 @@
+
+.link_selected{
+    text-decoration: none;
+    
+    background-color:var(--primary-bg-color);
+    color : var(--primary-txt-color);
+    
+}
+
+.link_listening{
+    text-decoration: none;
+    font-size:15px;
+    background-color:var(--secondary-bg-color);
+    color : var(--secondary-txt-color);
+}
+.link_listening:hover{
+    cursor:pointer;
+}
+
+.link_disable{
+    text-decoration: none;
+    background-color:var(--tierce-bg-color);
+    color : var(--tierce-txt-color);
+}
