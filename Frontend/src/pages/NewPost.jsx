@@ -56,6 +56,7 @@ function NewPost() {
         sessionStorage.setItem('messServeur', res.data.message)
         alert("post enregistré")
         sessionStorage.setItem('StatePosts',"non vide")
+        sessionStorage.setItem('stateNav', "Liste des posts")
         navigate('/AllPosts')
 
       })

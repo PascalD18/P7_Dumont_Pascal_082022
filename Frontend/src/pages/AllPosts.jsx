@@ -63,17 +63,21 @@ function AllPosts() {
                 <ul>
                     {posts.map((post) => (
                         <div >
-                            <OnSelect handleClick={onClickHandler}>
-                                <div className="container">
-
-                                    <h1
+                            <OnSelect classeName="container_img"
+                            handleClick={onClickHandler}>
+                                
+                                    <li className="date">{post.dateCreate}</li>
+                                    <li
                                         data-post={JSON.stringify(post)}
                                     >
-                                        {post.lastName}</h1>
+                                        {post.lastName}</li>
+                                        <li>{post.firstName}</li>
 
-                                </div>
+                             
                             </OnSelect>
                             <textarea className="description">{post.description}</textarea>
+                            
+                                <img src={post.imageUrl} alt="avatar"></img>
                         </div>
                     ))}
 

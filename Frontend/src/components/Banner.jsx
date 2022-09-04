@@ -215,4 +215,3 @@ function Banner() {
   )
 }
 export default Banner
- // <div className={`${displayLinkSignup} ${classLinkSignup}`}
