@@ -3,10 +3,9 @@
 	padding: 12px;
 	border-bottom: solid 3px black;
 	display: flex;
-	justify-content: center;
+	justify-content:space-around;
 	flex-direction: column;
 	align-items: center;
-	background-color: rgb(179, 205, 50);
 }
 
 .banner_logo {
@@ -15,35 +14,19 @@
 	width: 500px;
 }
 .banner_title {
-	position:relative;
-	bottom:-60px;
 	text-decoration: none;
-	color: red;
 }
 .banner_grp_link{
-	position:relative;
-	bottom:0px;
-	background-color:grey;
 	width:100%;
 	display: flex;
 	justify-content:space-between;
+	align-items: center;
 }
 
 .banner_grp_link_cont {
-	/*position: relative;
-	bottom: 0px;*/
 	display: flex;
 	justify-content: center;
 	flex-direction: row;
 	align-items: center;
-	width: cover;
 	height: 50px;
-	background-color: yellow;
-	margin:10,0,10,0 px;
-}
-.banner_display_link{
-	display:initial;
-}
-.banner_no_display_link{
-	display:none;
 }

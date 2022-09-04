@@ -18,7 +18,7 @@ function ConnectSignup() {
       "Content-type": `application/json; charset=utf-8`
     }
     const baseUrlBack = sessionStorage.getItem("baseUrlBack");
-    const baseUrl = `${baseUrlBack}/auth/signup`
+    const baseUrl = `${baseUrlBack}auth/signup`
     
     const obj = {
       email: email,
@@ -42,14 +42,14 @@ function ConnectSignup() {
 
 
       <label htmlFor="exampleEmail" >Email</label>
-      <input className="login"
+      <input className="identifiant"
         type="email"
         name="email"
         id="exampleEmail"
         placeholder="email"
         value={email}
         onChange={event => { setEmail(event.target.value) }} />
-      <label htmlFor="examplePassword">Password</label>
+      <label htmlFor="Mot de passe">Password</label>
       <input
         type="password"
         name="password"

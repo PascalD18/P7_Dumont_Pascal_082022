@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
-import Banner from '../components/Banner'
+import Banner from './Banner'
 
-function ConnectLogin() {
+function Login() {
   const navigate = useNavigate()
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -71,4 +71,4 @@ function ConnectLogin() {
     </div>
   )
 }
-export default ConnectLogin
+export default Login

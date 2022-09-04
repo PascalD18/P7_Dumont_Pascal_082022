@@ -3,6 +3,9 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
 import OnSelect from "../components/OnSelect"
 import Banner from '../components/Banner'
+import NewPost from './NewPost'
+import '../styles/Test.css'
+import '../styles/AllPosts.css'
 
 
 // Affichage de tous les posts
@@ -28,7 +31,13 @@ function AllPosts() {
         axios.get(baseUrl, { headers })
             .then((res) => {
                 setPosts(res.data)
-                //sessionStorage.setItem('Posts', JSON.stringify(res.data))
+                sessionStorage.setItem('Posts', JSON.stringify(res.data))
+                if (res.data.length === 0) {
+                    sessionStorage.setItem('StatePosts', "vide")
+                    sessionStorage.setItem('stateNav', "Nouveau post")
+                } else {
+                    sessionStorage.setItem('StatePosts', "non vide")
+                }
             })
             .catch((err) => {
                 console.log(err)
@@ -43,22 +52,28 @@ function AllPosts() {
 
     return (
         <div>
-            <div><Banner /></div>
+            <div>
+            { sessionStorage.getItem('StatePosts') === "vide" ? (
+             <NewPost/>
+            ):(
+              <Banner />
+            )}
+            </div>
             <div>
                 <ul>
                     {posts.map((post) => (
                         <div >
                             <OnSelect handleClick={onClickHandler}>
-                                <div>
+                                <div className="container">
 
-                                    <h1 
+                                    <h1
                                         data-post={JSON.stringify(post)}
                                     >
                                         {post.lastName}</h1>
-                                    
+
                                 </div>
                             </OnSelect>
-                            <h2>{post.description}</h2>
+                            <textarea className="description">{post.description}</textarea>
                         </div>
                     ))}
 

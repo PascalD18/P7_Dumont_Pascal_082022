@@ -2,7 +2,9 @@ import { useState } from 'react'
 import axios from 'axios'
 import Dayjs from 'dayjs'
 import FormData from 'form-data'
+import { useNavigate } from 'react-router-dom'
 import Banner from '../components/Banner'
+import '../styles/NewPost.css'
 
 
 
@@ -21,9 +23,10 @@ function NewPost() {
   const [description, setDescription] = useState('');
   const [image, setImage] = useState()
   const dateAct = Dayjs().format("YYYY-MM-DD")
+  const navigate = useNavigate()
 
   // État de navigation transmit au module 'Banner', pour le paramétrage de la mise en forme de ses liens
-  sessionStorage.setItem('stateNav', "Post sélectionné")
+  sessionStorage.setItem('stateNav', "Nouveau post")
   const handleSubmit = e => {
     e.preventDefault()
     const token = localStorage.getItem('token')
@@ -51,6 +54,10 @@ function NewPost() {
 
       .then((res) => {
         sessionStorage.setItem('messServeur', res.data.message)
+        alert("post enregistré")
+        sessionStorage.setItem('StatePosts',"non vide")
+        navigate('/AllPosts')
+
       })
       .catch((err) => { console.log(err) })
   }
@@ -76,13 +83,9 @@ function NewPost() {
           onChange={event => setFirstName(event.target.value)}
         />
         <label htmlFor="Description" ></label>
-        <input
-          type="string"
-          name="Description"
-          placeholder="Description"
+          <textarea className="description"
           value={description}
-          onChange={event => setDescription(event.target.value)}
-        />
+          onChange={event => setDescription(event.target.value)}/>
         <div>
           <input type="file" id="image"
             accept=".jpg,.jpeg,.png,.gif"

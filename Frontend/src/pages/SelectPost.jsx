@@ -8,14 +8,13 @@ function SelectPost() {
 
     const post=JSON.parse(sessionStorage.getItem('Post'))
  
-    //},[])
 
     return (
         <div>
             <div><Banner/></div>
             <div>
                 <ul>
-                    <h1>{post.lastName}</h1>     
+                    <textarea>{post.description}</textarea>     
                 </ul>
             </div>
         </div>
