@@ -1,0 +1,68 @@
+/* Mise en forme d'un poste selectionné */
+
+.sectSelect{
+    display:flex;
+    flex-direction: row;
+    height:500px;
+    background-color: yellow;
+}
+.grpAction{
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    width:15%;
+    background-color:blueviolet
+}
+.grpAction_contBtn{
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items:center;
+    height:15%;
+    width:80%;
+    padding:5px;
+    background-color: green;
+}
+.grpAction_contLike{
+    display:flex;
+    flex-direction:row;
+    justify-content:center;
+    align-items:center;
+    height:10%;
+    width:80%;
+    margin:10px;
+    background-color: red;
+}
+.grpData{
+    display:flex;
+    flex-direction:column;
+    justify-content: flex-start;
+    width:75%;
+    background-color:azure;
+
+}
+.grpData_cont_dataName{
+    display:flex;
+    flex-direction: row;
+    justify-content:space-around;
+    align-items:center;
+    height:10%;
+    background-color: greenyellow;
+}
+.grpData_cont_dataDescr{
+    display:flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    height:90%;
+    width:100%;
+    background-color:cadetblue;
+
+}
+.selectCont_img{
+    width:45%;
+    background-color:burlywood;
+}
+.selectTextarea{
+    width:45%;
+    height:400px;
+}

@@ -1,0 +1,34 @@
+
+.login_sec{
+	display:flex;
+	flex-direction:row;
+	align-items:center;
+	height:100px;
+}
+
+.login_grp_datas{
+	display:flex;
+	flex-direction:row;
+}
+.login_grp_data{
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+	height:80px;
+}
+.login_grp_btn{
+	width:100%;
+	display: flex;
+	justify-content:flex-end;
+	align-items: center;
+    background-color:rgb(255, 217, 127);
+}
+.login_grp_btn_cont {
+	display: flex;
+    width:250px;
+	justify-content:space-around;
+	flex-direction: row;
+	align-items: center;
+    padding:5px;
+    background-color: yellowgreen;
+}

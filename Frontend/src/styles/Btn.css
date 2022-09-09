@@ -1,5 +1,5 @@
 
-div[class^="link_"]{
+div[class^="btn_"]{
     display:flex;
     flex-direction:column;
     justify-content: center;
@@ -8,36 +8,52 @@ div[class^="link_"]{
     border-radius: 10px;
     height:42px;
     padding:5px;
+    font-size: 12px;
+    border-style: solid;
+    border-color: black;
+}
+button{
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items:center;
+    text-align: center;
+    border-radius: 10px;
+    height:30px;
+
+    padding:5px;
+    margin:5px;
     font-size: 15px;
     border-style: solid;
     border-color: black;
 }
 
-.link_selected{
+.btn_selected{
+    text-decoration: none;
     font-weight: 800;
     background-color:var(--primary-bg-color);
     color : var(--primary-txt-color);
     
 }
-.link_disable{
+.btn_disable{
     font-size:10px;
     background-color:var(--tierce-bg-color);
     color : var(--tierce-txt-color);
 }
-.link_listening{
+.btn_listening{
     text-decoration: none;
     background-color:var(--secondary-bg-color);
     color : var(--secondary-txt-color);
 }
-.link_listening:hover{
+.btn_listening:hover{
     scale:1.1;
     cursor:pointer;
 }
 
-.link_display{
+.btn_display{
 	visibility:visible;
 }
 
-.link_no_display{
+.btn_no_display{
 	visibility: hidden;
 }

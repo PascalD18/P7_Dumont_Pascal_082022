@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-import Banner from './Banner'
+import { useNavigate } from 'react-router-dom'
+import BannerSignup from './BannerSignup'
+import '../../styles/Form.css'
 
-function ConnectSignup() {
+function Signup() {
+  const navigate = useNavigate()
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -33,14 +36,15 @@ function ConnectSignup() {
     })
       .then((res) => {
         sessionStorage.setItem('messServeur', res.data.message)
+        navigate('/AllPosts')
       })
       .catch((err) => { console.log(err) })
   }
   return (
     <div>
-      <div><Banner /></div>
-
-
+      <div>
+        <BannerSignup/>   
+      </div>
       <label htmlFor="exampleEmail" >Email</label>
       <input className="identifiant"
         type="email"
@@ -63,4 +67,4 @@ function ConnectSignup() {
     </div>
   )
 }
-export default ConnectSignup
+export default Signup

@@ -3,21 +3,16 @@ import axios from 'axios'
 import Dayjs from 'dayjs'
 import FormData from 'form-data'
 import { useNavigate } from 'react-router-dom'
-import Banner from '../components/Banner'
-import '../styles/NewPost.css'
-
-
-
+import BannerUpDate from './BannerUpDate'
+import '../../styles/Btn.css'
 
 //Création d'un poste
-function NewPost() {
-
-  // État de navigation transmit au module 'Banner', pour le paramétrage de la mise en forme de ses liens
-  sessionStorage.setItem('stateNav', "Nouveau post")
-
-  const baseUrlBack = sessionStorage.getItem("baseUrlBack");
-  const baseUrl = `${baseUrlBack}posts/`
+function UpdatePost() {
   const userId = localStorage.getItem("userId")
+  const postId=sessionStorage.getItem('PostId')
+  const post=JSON.parse(sessionStorage.getItem('Post'))
+  const baseUrlBack = sessionStorage.getItem("baseUrlBack");
+  const baseUrl = `${baseUrlBack}posts/${postId}`
   const [lastName, setLastName] = useState('');
   const [firstName, setFirstName] = useState('');
   const [description, setDescription] = useState('');
@@ -25,54 +20,49 @@ function NewPost() {
   const dateAct = Dayjs().format("YYYY-MM-DD")
   const navigate = useNavigate()
 
-  // État de navigation transmit au module 'Banner', pour le paramétrage de la mise en forme de ses liens
-  sessionStorage.setItem('stateNav', "Nouveau post")
   const handleSubmit = e => {
     e.preventDefault()
     const token = localStorage.getItem('token')
-
     const headers = {
       "Authorization": `Bearer ${token}`,
       'My-Custom-Header': 'foobar'
     }
-
     const postJson = {
       userId: userId,
       dateCreate: dateAct,
       lastName: lastName,
       firstName: firstName,
-      description: description
-    }
+      description: description,
 
+      }
     const postLinea = JSON.stringify(postJson)
-
     const postData = new FormData()
     postData.append("post", postLinea)
     postData.append('image', image)
 
-    axios.post(baseUrl, postData, { headers })
-
+    axios.put(baseUrl, postData, { headers })
       .then((res) => {
         sessionStorage.setItem('messServeur', res.data.message)
-        alert("post enregistré")
-        sessionStorage.setItem('StatePosts',"non vide")
-        sessionStorage.setItem('stateNav', "Liste des posts")
+        alert("post modifié")
+        sessionStorage.setItem('StatePosts', "non vide")
         navigate('/AllPosts')
-
       })
-      .catch((err) => { console.log(err) })
+      .catch((err) => { alert(err) })
   }
+
+    //Ne fait rien si 'authNav' est invalidé
+    if (localStorage.getItem('authNav') ==='false') { return }
   return (
     <div>
-      <div><Banner /></div>
+      <div><BannerUpDate /></div>
       <div>
         <p>Créé le:<span>{dateAct}</span></p>
 
         <label htmlFor="Nom" ></label>
         <input
           type="string"
-          name="Nom"
           placeholder="Nom"
+          nom="lastName"
           value={lastName}
           onChange={event => setLastName(event.target.value)}
         />
@@ -84,19 +74,23 @@ function NewPost() {
           onChange={event => setFirstName(event.target.value)}
         />
         <label htmlFor="Description" ></label>
-          <textarea className="description"
+        <textarea className="description"
           value={description}
-          onChange={event => setDescription(event.target.value)}/>
+          onChange={event => setDescription(event.target.value)}
+           />
         <div>
           <input type="file" id="image"
             accept=".jpg,.jpeg,.png,.gif"
-            onChange={e => setImage(e.target.files[0])}
+            value={image}
+            onChange={e => setImage(e.target.files[0])
+            }
           />
         </div>
-        <button onClick={handleSubmit}>Submit</button>
+        <img src={post.imageUrl} alt="avatar2"></img>
+        <button className="btn_listening" onClick={handleSubmit}>Submit</button>
 
       </div>
     </div>
   )
 };
-export default NewPost
+export default UpdatePost

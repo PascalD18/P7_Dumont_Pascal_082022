@@ -1,32 +1,30 @@
 .banner_sect {
 	color: black;
-	padding: 12px;
-	border-bottom: solid 3px black;
 	display: flex;
-	justify-content:space-around;
+	justify-content:space-between;
 	flex-direction: column;
+	flex-wrap: wrap;
 	align-items: center;
+	height:fit-content;
+	background-color:yellowgreen;
+}
+
+.banner_cont_img{
+	position:relative;
+	top:50px;
+	height:70px;
+	width:70%;
 }
 
 .banner_logo {
-	/*object-fit:cover;*/
-	height: 100px;
-	width: 500px;
+	height: 60px;
 }
 .banner_title {
+	position:relative;
+	font-size:30px;
+	bottom: -50px;
 	text-decoration: none;
-}
-.banner_grp_link{
-	width:100%;
-	display: flex;
-	justify-content:space-between;
-	align-items: center;
+	margin:5px;
+	
 }
 
-.banner_grp_link_cont {
-	display: flex;
-	justify-content: center;
-	flex-direction: row;
-	align-items: center;
-	height: 50px;
-}
