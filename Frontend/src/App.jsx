@@ -8,10 +8,13 @@ import AllPosts from './pages/AllPosts/AllPosts'
 import SelectPost from './pages/SelectPost/SelectPost'
 import NewPost from './pages/NewPost/NewPost'
 import UpDatePost from './pages/UpDatePost/UpDatePost'
-import AuthNav from './components/AuthNav'
 
 //Initialisation de l'URL de base pour le routage de l'API
 sessionStorage.setItem("baseUrlBack", 'http://localhost:3001/api/')
+
+// Initialisation de l'emplacement de l'image dans le backend
+sessionStorage.setItem("repImages", 'http://localhost:3001/images/')
+ 
 
 // Initialisation du Header de départ pour l'entête des requêtes de l'API
 const baseHeader = {
@@ -35,22 +38,20 @@ function App() {
           </ProtectRoute>
         } />
         <Route path="/SelectPost" element={
-          <>
-            <AuthNav />,
+          <ProtectRoute>
             <SelectPost />
-          </>
+            </ProtectRoute>
         } />
         <Route path="/NewPost" element={
-          <>
-            <AuthNav />,
+          <ProtectRoute>
             <NewPost />
-          </>
+            </ProtectRoute>
         } />
         <Route exact path="/UpdatePost" element={
-          <>
-            <AuthNav />,
+          <ProtectRoute>
             <UpDatePost />
-          </>} />
+            </ProtectRoute>
+        } />
         <Route path="/*" element={
           <p>Non autorisé</p>
         } />

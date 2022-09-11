@@ -36,7 +36,7 @@ exports.createPost = (req, res) => {
 // Modification d'un objet Post
 exports.modifyPost = (req, res) => {
 
-  // Vérifie si une image a était selectionnée et enregistrée avec un nom unique
+  // Vérifie si une image a était sélectionnée et enregistrée avec un nom unique
   postObject = req.file ?
     {
       ...JSON.parse(req.body.post),

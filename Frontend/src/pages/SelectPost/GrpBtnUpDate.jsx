@@ -6,18 +6,18 @@ import { useNavigate } from 'react-router-dom';
 import '../../styles/Btn.css'
 
 function GrpBtnUpDate() {
-
+     
     const navigate = useNavigate()
 
     const onClickHandler = (e) => {
+        
         navigate("/UpdatePost")
     }
 
     const onClickDeletePost = () => {
         const postDelete = JSON.parse(sessionStorage.getItem('Post'))
-        const postId = postDelete._id;
         const baseUrlBack = sessionStorage.getItem("baseUrlBack")
-        const baseUrl = `${baseUrlBack}posts/${postId}`
+        const baseUrl = `${baseUrlBack}posts/${postDelete._id}`
         const token = localStorage.getItem('token')
         const headers = {
             "Authorization": `Bearer ${token}`
