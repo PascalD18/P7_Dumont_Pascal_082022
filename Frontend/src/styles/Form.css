@@ -46,7 +46,7 @@
     display: flex;
     flex-direction: row;
     height: 500px;
-    background-color: yellow;
+    
 }
 
 .grpAction {
@@ -54,7 +54,8 @@
     flex-direction: column;
     justify-content: space-between;
     width: 15%;
-    background-color: blueviolet
+    border-style:solid;
+    border-color:red;
 }
 
 .grpAction_contBtn {
@@ -71,12 +72,13 @@
 .grpAction_contLike {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    height: 10%;
+    height: 30%;
     width: 80%;
     margin: 10px;
-    background-color: red;
+
 }
 
 .grpData {

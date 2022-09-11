@@ -1,7 +1,7 @@
 .bBtn_grp_btn{
 
 	display: flex;
-	justify-content:space-between;
+	justify-content:flex-end;
 	flex-wrap: wrap;
 	align-items: center;
     height:fit-content;

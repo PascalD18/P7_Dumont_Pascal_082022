@@ -20,11 +20,12 @@ function NewPost() {
 
   const handleSubmit = e => {
     e.preventDefault()
-    const token = localStorage.getItem('token')
-    const headers = {
-      "Authorization": `Bearer ${token}`,
-      'My-Custom-Header': 'foobar'
-    }
+  //  const token = localStorage.getItem('token')
+  //  const headers = {
+  //    "Authorization": `Bearer ${token}`,
+  //    'My-Custom-Header': 'foobar'
+  //  }
+  const headers=JSON.parse(localStorage.getItem('authHeader'))
     const postJson = {
       userId: userId,
       dateCreate: dateAct,

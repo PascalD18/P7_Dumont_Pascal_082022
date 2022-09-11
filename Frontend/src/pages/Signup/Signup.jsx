@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import BannerSignup from './BannerSignup'
@@ -9,41 +9,62 @@ function Signup() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  // État de navigation transmit au module 'Banner', pour le paramétrage de la mise en forme de ses liens
-  sessionStorage.setItem('stateNav',"Inscription")
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    // Initialisation de l'entête de la requête
-    const headers = {
-      "Accept": `application/json`,
-      "Accept-Language": `fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3`,
-      "Content-type": `application/json; charset=utf-8`
-    }
+    // Récupération des variables globales
+    const baseHeader = JSON.parse(sessionStorage.getItem('baseHeader'))
     const baseUrlBack = sessionStorage.getItem("baseUrlBack");
-    const baseUrl = `${baseUrlBack}auth/signup`
-    
+
+    //Initialisation de l'url de base
+    const baseUrlSignup = `${baseUrlBack}auth/signup`
+
+    // Maj des données avant envoi de la requête
     const obj = {
       email: email,
       password: password
     }
-
     axios({
       method: 'post',
-      headers: headers,
-      url: baseUrl,
+      headers: baseHeader,
+      url: baseUrlSignup,
       data: obj
     })
       .then((res) => {
-        sessionStorage.setItem('messServeur', res.data.message)
-        navigate('/AllPosts')
+        alert(res.data.message)
+        // Nouvelle requête en mode connexion login
+        const baseUrlLogin = `${baseUrlBack}auth/login`
+        axios({
+          method: 'post',
+          url: baseUrlLogin,
+          data: obj
+        })
+          .then((res) => {
+            localStorage.setItem('token', res.data.token)
+            localStorage.setItem('userId', res.data.userId)
+
+            // MAJ du header en y ajoutant l'autorisation au header de base avec la méthode 'Bearer'
+            const baseHeader = JSON.parse(sessionStorage.getItem('baseHeader'))
+            baseHeader.Authorization= `Bearer ${res.data.token}`
+            localStorage.setItem('authHeader', JSON.stringify(baseHeader))
+            localStorage.setItem('authNav', 'Nav Ok')
+
+            // Affichage de tous les postes
+            navigate('/AllPosts')
+          })
+          .catch((err) => { alert(err) });
+
       })
-      .catch((err) => { console.log(err) })
+      .catch((err) => { alert(err) })
+
+
+
   }
+
   return (
     <div>
       <div>
-        <BannerSignup/>   
+        <BannerSignup />
       </div>
       <label htmlFor="exampleEmail" >Email</label>
       <input className="identifiant"

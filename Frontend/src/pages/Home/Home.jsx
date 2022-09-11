@@ -1,17 +1,22 @@
-import { useNavigate } from 'react-router-dom'
-import '../../styles/BannerBtn.css'
+import { Link } from 'react-router-dom'
+import { useNavigate} from 'react-router-dom'
+import Banner from '../../components/Banner'
+import './Home.css'
 import '../../styles/Btn.css'
 
-
-function HomeButtons () {
+const Home = () => {
+    localStorage.clear('token')
     const navigate = useNavigate()
+
 
     const onClickHandler = (e) => {
         navigate(e.target.dataset.nav)
       }
-
-    return (
-        <div className="Bbtn_grp_btn">
+    return ( 
+        <div>
+            <Banner />,
+            <Link to="/"></Link>,
+            <div className="Bbtn_grp_btn">
             <div className="bBtn_grp_btn_cont">
                 <button className="btn_listening"
                  data-nav="/Signup"
@@ -27,6 +32,8 @@ function HomeButtons () {
               </button>
             </div>
         </div> 
+            
+        </div>
     )
 }
-export default HomeButtons
+export default Home

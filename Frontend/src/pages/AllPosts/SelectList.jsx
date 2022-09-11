@@ -1,7 +1,5 @@
 import OnSelect from "../../components/OnSelect"
-//import SelectPost from '../../pages/SelectPost/SelectPost'
 import { useNavigate } from 'react-router-dom';
-//import {useState} from 'react'
 import '../../styles/index.css'
 import '../../styles/Form.css'
 import './AllPosts.css'
@@ -9,7 +7,6 @@ import '../../styles/index.css'
 
 function SelectList({ postsList }) {
     const navigate = useNavigate()
-    //const [post,setPost] = useState([])
    
     const onClickHandler = (e) => {
         sessionStorage.setItem('PostId', e.target.dataset.id)

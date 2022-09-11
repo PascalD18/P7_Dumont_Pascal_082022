@@ -1,68 +1,34 @@
-/* Mise en forme d'un poste selectionné */
-
-.sectSelect{
+/* en form de l'icone du pouce --*/
+.cont_pouces{
     display:flex;
     flex-direction: row;
-    height:500px;
-    background-color: yellow;
-}
-.grpAction{
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
-    width:15%;
-    background-color:blueviolet
-}
-.grpAction_contBtn{
-    display:flex;
-    flex-direction: column;
-    justify-content:center;
-    align-items:center;
-    height:15%;
-    width:80%;
-    padding:5px;
-    background-color: green;
-}
-.grpAction_contLike{
-    display:flex;
-    flex-direction:row;
-    justify-content:center;
-    align-items:center;
-    height:10%;
-    width:80%;
-    margin:10px;
-    background-color: red;
-}
-.grpData{
-    display:flex;
-    flex-direction:column;
-    justify-content: flex-start;
-    width:75%;
-    background-color:azure;
+    justify-content: center;
+    align-items: center;
+    height:100px;
+    width:100px;
+    border-style:solid;
 
 }
-.grpData_cont_dataName{
-    display:flex;
-    flex-direction: row;
-    justify-content:space-around;
-    align-items:center;
-    height:10%;
-    background-color: greenyellow;
-}
-.grpData_cont_dataDescr{
-    display:flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    height:90%;
-    width:100%;
-    background-color:cadetblue;
 
-}
-.selectCont_img{
-    width:45%;
-    background-color:burlywood;
-}
-.selectTextarea{
-    width:45%;
-    height:400px;
-}
+.pouce_creux {
+    position:relative;
+    right:18px;
+    font-size: 40px;
+    z-index: 1;
+  }
+  .pouce_creux:hover {
+    scale:1.1;
+    cursor: pointer;
+  }
+
+  .pouce_plein {
+    position:relative;
+    right:-18px;
+    font-size: 40px;
+    color: #0fd97e;
+    z-index: 2;
+  }
+.pouce_plein:hover {
+    scale:1.1;
+    cursor: pointer;
+  }

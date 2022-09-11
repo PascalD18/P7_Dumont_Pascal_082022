@@ -1,7 +1,9 @@
 import { useEffect } from 'react'
 import BannerSelectPost from './BannerSelectPost'
 import GrpBtnUpDate from './GrpBtnUpDate'
+import OnSelect from '../../components/OnSelect'
 import '../../styles/Banner.css'
+import '../../styles/Form.css'
 import './SelectPost.css'
 import '../../styles/index.css'
 import '../../styles/Btn.css'
@@ -12,6 +14,13 @@ function SelectPost() {
     const post = JSON.parse(sessionStorage.getItem('Post'));
     useEffect(() => {
     }, []);
+
+    //const [visibilityHollow,setVisibilityHollow] = useState('visible')
+   // const [visibilityFull,setVisibilityFull] = useState('hidden')
+    const onClickChange = (e) => {
+
+    }
+
     //Ne fait rien si 'authNav' est invalidé
     if (localStorage.getItem('authNav' === 'false')) { return }
     return (
@@ -44,8 +53,24 @@ function SelectPost() {
                         }
                     </div>
                     <div className="grpAction_contLike">
-                        <i className="fas fa-thumbs-up"></i>
+                        <OnSelect onClick={onClickChange}>
+                     {/*
+                        <div className="cont_pouces">
+                            <i className={`"fas fa-thumbs-up
+                             pouce_plein ${visibilityFull}`}
+                             ></i>
+                         <i className={`far fa-thumbs-up
+                              pouce_creux ${visibilityHollow}`}
+                         ></i>
+                        </div>
+                    */}
+                    </OnSelect>
+
+                      
+                        
                         <p className="text_data">{`post.like`}</p>
+                       
+
                     </div>
                 </div>
 

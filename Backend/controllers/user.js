@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 
 exports.signup = (req, res) => {
 
-    // Cryptage du mot de passe, unidirectinnel ( méthode hash')
+    // Cryptage du mot de passe, unidirectionnel ( méthode hash')
     bcrypt.hash(req.body.password, 10)
         .then(hash => {
             const user = new User({
@@ -23,8 +23,7 @@ exports.signup = (req, res) => {
 exports.login = (req, res) => {
     User.findOne({ email: req.body.email })
 
-
-        // Verifie si l'email de l'utilisateur n'existe pas déjà
+        // Vérifie si l'email de l'utilisateur n'existe pas déjà
         .then(user => {
             if (!user) {
                 return res.status(404).json({ error: 'Utilisateur non trouvé !' });
@@ -36,6 +35,7 @@ exports.login = (req, res) => {
                     if (!valid) {
                         return res.status(401).json({ error: 'Mot de passe incorrect !' });
                     }
+
                     // Si mot le passe authentifié => Définit un token utilisateur à partir de la variable d'environnement 
                     // et limite sa validité à 24h
                     res.status(200).json({
@@ -47,7 +47,8 @@ exports.login = (req, res) => {
                         )
                     });
                 })
-                .catch(error => res.status(500).json({ error }));
+                .catch(error => res.status(500).json({ error })
+                );
         })
         .catch(error => res.status(500).json({ error }));
 };

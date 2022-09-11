@@ -8,9 +8,10 @@ import '../../styles/Btn.css'
 
 //Création d'un poste
 function UpdatePost() {
+  const navigate = useNavigate()
   const userId = localStorage.getItem("userId")
-  const postId=sessionStorage.getItem('PostId')
-  const post=JSON.parse(sessionStorage.getItem('Post'))
+  const postId = sessionStorage.getItem('PostId')
+  const post = JSON.parse(sessionStorage.getItem('Post'))
   const baseUrlBack = sessionStorage.getItem("baseUrlBack");
   const baseUrl = `${baseUrlBack}posts/${postId}`
   const [lastName, setLastName] = useState('');
@@ -18,40 +19,52 @@ function UpdatePost() {
   const [description, setDescription] = useState('');
   const [image, setImage] = useState()
   const dateAct = Dayjs().format("YYYY-MM-DD")
-  const navigate = useNavigate()
-
+  //const [dataSend, setDataSend] = useState([])
   const handleSubmit = e => {
     e.preventDefault()
-    const token = localStorage.getItem('token')
-    const headers = {
-      "Authorization": `Bearer ${token}`,
-      'My-Custom-Header': 'foobar'
-    }
+    // const token = localStorage.getItem('token')
+    // const headers = {
+    //   "Authorization": `Bearer ${token}`,
+    //   'My-Custom-Header': 'foobar'
+    // }
+    const headers = JSON.parse(localStorage.getItem('AuthHeader'))
     const postJson = {
       userId: userId,
       dateCreate: dateAct,
       lastName: lastName,
       firstName: firstName,
       description: description,
+    }
 
-      }
-    const postLinea = JSON.stringify(postJson)
-    const postData = new FormData()
-    postData.append("post", postLinea)
-    postData.append('image', image)
 
-    axios.put(baseUrl, postData, { headers })
-      .then((res) => {
-        sessionStorage.setItem('messServeur', res.data.message)
-        alert("post modifié")
-        sessionStorage.setItem('StatePosts', "non vide")
-        navigate('/AllPosts')
-      })
-      .catch((err) => { alert(err) })
+    if (image === undefined) {
+      const data=JSON.parse(postJson)
+      axios.put(baseUrl, data, { headers })
+        .then((res) => {
+          sessionStorage.setItem('messServeur', res.data.message)
+          alert("post modifié")
+          sessionStorage.setItem('StatePosts', "non vide")
+          navigate('/AllPosts')
+        })
+        .catch((err) => { alert(err) })
+    } else {
+      const postLinea = JSON.stringify(postJson)
+      const postData = new FormData()
+      postData.append("post", postLinea)
+      postData.append('image', image)
+      axios.put(baseUrl, postData, { headers })
+        .then((res) => {
+          sessionStorage.setItem('messServeur', res.data.message)
+          alert("post modifié")
+          sessionStorage.setItem('StatePosts', "non vide")
+          navigate('/AllPosts')
+        })
+        .catch((err) => { alert(err) })
+    }
   }
 
-    //Ne fait rien si 'authNav' est invalidé
-    if (localStorage.getItem('authNav') ==='false') { return }
+  //Ne fait rien si 'authNav' est invalidé
+  if (localStorage.getItem('authNav') === 'false') { return }
   return (
     <div>
       <div><BannerUpDate /></div>
@@ -77,11 +90,10 @@ function UpdatePost() {
         <textarea className="description"
           value={description}
           onChange={event => setDescription(event.target.value)}
-           />
+        />
         <div>
           <input type="file" id="image"
             accept=".jpg,.jpeg,.png,.gif"
-            value={image}
             onChange={e => setImage(e.target.files[0])
             }
           />

@@ -1,33 +1,29 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState} from 'react'
+//import { Navigate } from 'react-router-dom'
 import axios from 'axios'
 import BannerAllPosts from './BannerAllPosts'
 import SelectList from './SelectList'
 
 // Affichage de tous les posts
 function AllPosts() {
-
-    const [postsList, setPostsList] = useState([])
-
+   const [postsList,setPostsList] = useState([])
 
     //Requête de tous les postes
     useEffect((postsList) => {
+        
         const baseUrlBack = sessionStorage.getItem("baseUrlBack");
         const baseUrl = `${baseUrlBack}posts/`
-        const token = localStorage.getItem('token')
-        const headers = {
-            "Authorization": `Bearer ${token}`,
-        }
+        const headers=JSON.parse(localStorage.getItem('authHeader'))
         axios.get(baseUrl, { headers })
             .then((res) => {
                 setPostsList(res.data)
-                sessionStorage.setItem('Posts',JSON.stringify(res.data))
+                sessionStorage.setItem('Posts',JSON.stringify(postsList))
             })
             .catch((err) => {
                 console.log(err)
             })
     },([]));
-    //Ne fait rien si 'authNav' est invalidé
-    if (localStorage.getItem('authNav' === 'false')) { return }
+
     return (
         <div>
             <BannerAllPosts />,

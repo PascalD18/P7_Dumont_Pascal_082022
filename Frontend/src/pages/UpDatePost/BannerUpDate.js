@@ -18,7 +18,7 @@ function BannerUpDate() {
       <div className="banner_cont_img">
         <img className="img_logo banner_logo" src={logo} alt='Groupomania' />
       </div>
-      <h1 className="banner_title">Boite à idées</h1>
+      <h1 className="B_title">Boite à idées</h1>
       <div className="bBtn_grp_btn">
         <div className="bBtn_grp_btn_cont">
           <button className="btn_listening"

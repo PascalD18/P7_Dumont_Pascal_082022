@@ -11,11 +11,7 @@ function DeletePost() {
         const postId = postDelete._id;
         const baseUrlBack = sessionStorage.getItem("baseUrlBack")
         const baseUrl = `${baseUrlBack}posts/${postId}`
-        const token = localStorage.getItem('token')
-        const headers = {
-            "Authorization": `Bearer ${token}`
-        }
-
+        const headers=JSON.parse(localStorage.getItem('AuthHeader'))
         axios.delete(baseUrl, { headers })
             .then(() => {
                 alert("post supprimé")

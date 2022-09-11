@@ -60,3 +60,9 @@ textarea {
   scale: 1.1;
   cursor: pointer;
 }
+.hidden{
+  visibility:hidden;
+}
+.visible{
+  visibility:visible;
+}
