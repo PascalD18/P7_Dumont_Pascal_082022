@@ -5,7 +5,6 @@ import Dayjs from 'dayjs'
 import FormData from 'form-data'
 import { useNavigate } from 'react-router-dom'
 import BannerNewPost from './BannerNewPost'
-import '../../styles/Btn.css'
 
 //Création d'un poste
 function NewPost() {
@@ -130,7 +129,7 @@ function NewPost() {
           {image!== undefined &&
             <img src={`${sessionStorage.getItem("repImages")}${image.name}`} alt="avatar2"></img>
           }</>
-        <button id="boutonImage"
+        <button id="boutonImage" className="Btn_Listening"
           onClick={handleSubmit}>Submit</button>
       </div>
     </div>

@@ -2,8 +2,7 @@ import React from 'react'
   
 const OnSelect = ({ children, handleClick }) => {
     return (
-        <div onClick={handleClick} 
-           >
+        <div onClick={handleClick}>
             {children}
         </div>
     )

@@ -1,10 +1,9 @@
 //import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
-import logo from '../../assets/img/global/icon-logo_groupomania.png'
+import Logo from '../../assets/img/global/icon-logo_groupomania.png'
 import '../../styles/index.css'
-import '../../styles/Banner.css'
-import '../../styles/BannerBtn.css'
-import '../../styles/Btn.css'
+import './UpDatePost.css'
+
 
 function BannerUpDate() {
   const navigate = useNavigate()
@@ -14,26 +13,24 @@ function BannerUpDate() {
   }
 
   return (
-    <div className="banner_sect">
-      <div className="banner_cont_img">
-        <img className="img_logo banner_logo" src={logo} alt='Groupomania' />
-      </div>
+    <div className="B_Sect">
+        <img className="Logo" src={Logo} alt='Groupomania' />
       <h1 className="B_title">Boite à idées</h1>
-      <div className="bBtn_grp_btn">
-        <div className="bBtn_grp_btn_cont">
-          <button className="btn_listening"
+      <div className="B_GrpBtn">
+          <div className="B_GrpBtn_ContLeft">
+            <button className="Btn_Listening"
             data-nav="/AllPosts"
             onClick={onClickHandler}
           >
             LISTE DES POSTES
           </button>
-          <button className="btn_selected"
+          <button className="Btn_Selected"
             onClick={onClickHandler}
           >
             MODIFICATION DE POST
           </button>
         </div>
-        <button className="btn_listening"
+        <button className="Btn_Listening"
           data-nav="/"
           onClick={onClickHandler}
         >

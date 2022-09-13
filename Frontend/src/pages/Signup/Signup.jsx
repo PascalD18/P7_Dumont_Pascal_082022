@@ -2,7 +2,7 @@ import { useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import BannerSignup from './BannerSignup'
-import '../../styles/Form.css'
+import './Signup.css'
 
 function Signup() {
   const navigate = useNavigate()
@@ -63,28 +63,33 @@ function Signup() {
 
   return (
     <div>
-      <div>
-        <BannerSignup />
-      </div>
-      <label htmlFor="exampleEmail" >Email</label>
-      <input className="identifiant"
-        type="email"
-        name="email"
-        id="exampleEmail"
-        placeholder="email"
-        value={email}
-        onChange={event => { setEmail(event.target.value) }} />
-      <label htmlFor="Mot de passe">Password</label>
-      <input
-        type="password"
-        name="password"
-        id="examplePassword"
-        placeholder="password"
-        value={password}
-        onChange={event => setPassword(event.target.value)}
-      />
-      <button onClick={handleSubmit}>Submit</button>
-
+      <div><BannerSignup /></div>
+        <div className="S_Sect">
+          <div className="S_GrpData">
+            <label className="Label_Data" htmlFor="saisieEmail" >Email</label>
+            <input className="Text_Input"
+              type="email"
+              name="email"
+              id="email"
+              placeholder="email"
+              value={email}
+              onChange={event => { setEmail(event.target.value) }} />
+          </div>
+          <div className="S_GrpData">
+            <label className="Label_Data" htmlFor="saisiePassword">Password</label>
+            <input className="Text_Input"
+              type="password"
+              name="password"
+              id="password"
+              placeholder="password"
+              value={password}
+              onChange={event => setPassword(event.target.value)}
+            />
+          </div>
+          <div className="S_GrpBtn">
+            <button className="Btn_Listening" onClick={handleSubmit}>Valider</button>
+          </div>
+        </div>
     </div>
   )
 }

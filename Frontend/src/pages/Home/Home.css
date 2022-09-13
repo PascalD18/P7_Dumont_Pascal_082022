@@ -1,5 +1,19 @@
-.bBtn_grp_btn{
-
+.B_Sect{
+ display:flex;
+ flex-direction: row;
+ justify-content:center;
+ align-items:center;
+ flex-wrap:wrap;
+}
+.Logo{
+	height:var(--size-height-logo);
+	margin:10px;
+}
+.Title{
+ font-size:var(--font-size-title);
+ margin:10px;
+}
+.B_GrpBtn{
 	display: flex;
 	justify-content:flex-end;
 	flex-wrap: wrap;
@@ -8,11 +22,12 @@
     width:100%;
 
 }
-.bBtn_grp_btn_cont {
+.B_GrpBtn_ContRight {
 	display: flex;
 	justify-content:space-between;
 	flex-direction: row;
+	flex-wrap: wrap;
 	align-items: center;
-	height:95%;
+	width:fit-content;
     padding:5px;
 }

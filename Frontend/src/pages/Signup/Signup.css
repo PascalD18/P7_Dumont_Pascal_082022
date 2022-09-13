@@ -1,4 +1,3 @@
-
 /* --- Banner ---*/
 .B_Sect{
  display:flex;
@@ -8,12 +7,12 @@
  flex-wrap:wrap;
 }
 .Logo{
-	height:var(--size-height-logo);
-	margin:10px;
+	height:var(--size-height-logo)px;
+    margin:10px;
 }
 .Title{
- font-size:var(--font-size-title);
- margin:10px;
+	font-size:var(--font-size-title)px;
+	margin:10px;
 }
 .B_GrpBtn{
 	display: flex;
@@ -32,21 +31,20 @@
     padding:5px;
 }
 /* --- Page ---*/
-.L_Sect{
+.S_Sect{
 	display:flex;
 	flex-direction:row;
-	justify-content:flex-start;
 	align-items:center;
-	height:var(--height-section-connexion);
+	height:100px;
 }
 
-.L_Grp_Data{
+.S_Grp_Data{
 	display:flex;
 	flex-direction:column;
 	align-items:center;
 	height:80px;
 }
-.L_GrpBtn{
+.S_GrpBtn{
 	width:100%;
 	display: flex;
 	justify-content:flex-start;

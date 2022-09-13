@@ -1,5 +1,5 @@
 import { Navigate } from 'react-router-dom'
-const ProtectedRoute = ({children }) => {
+const PrivateRoute = ({children }) => {
      const token = localStorage.getItem('token')
     if (token == null) {
      alert("Merci de vous reconnecter.")
@@ -10,4 +10,4 @@ const ProtectedRoute = ({children }) => {
     return children;
   };
 
-  export default ProtectedRoute
+  export default PrivateRoute

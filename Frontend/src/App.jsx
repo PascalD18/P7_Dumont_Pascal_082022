@@ -1,11 +1,10 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import ProtectRoute from './components/ProtectRoute'
+import PrivateRoute from './components/PrivateRoute'
 import Home from './pages/Home/Home'
 import Login from './pages/Login/Login'
 import Signup from './pages/Signup/Signup'
 import AllPosts from './pages/AllPosts/AllPosts'
-import SelectPost from './pages/SelectPost/SelectPost'
 import NewPost from './pages/NewPost/NewPost'
 import UpDatePost from './pages/UpDatePost/UpDatePost'
 
@@ -14,7 +13,7 @@ sessionStorage.setItem("baseUrlBack", 'http://localhost:3001/api/')
 
 // Initialisation de l'emplacement de l'image dans le backend
 sessionStorage.setItem("repImages", 'http://localhost:3001/images/')
- 
+
 
 // Initialisation du Header de départ pour l'entête des requêtes de l'API
 const baseHeader = {
@@ -22,7 +21,7 @@ const baseHeader = {
   "Accept-Language": `fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3`,
   "Content-type": `application/json; charset=utf-8`
 }
-sessionStorage.setItem('baseHeader',JSON.stringify(baseHeader))
+sessionStorage.setItem('baseHeader', JSON.stringify(baseHeader))
 
 function App() {
 
@@ -33,24 +32,19 @@ function App() {
         <Route exact path="/Login" element={<Login />} />
         <Route path="/Signup" element={<Signup />} />
         <Route path="/AllPosts" element={
-          <ProtectRoute>
+          <PrivateRoute>
             <AllPosts />
-          </ProtectRoute>
-        } />
-        <Route path="/SelectPost" element={
-          <ProtectRoute>
-            <SelectPost />
-            </ProtectRoute>
+          </PrivateRoute>
         } />
         <Route path="/NewPost" element={
-          <ProtectRoute>
+          <PrivateRoute>
             <NewPost />
-            </ProtectRoute>
+          </PrivateRoute>
         } />
         <Route exact path="/UpdatePost" element={
-          <ProtectRoute>
+          <PrivateRoute>
             <UpDatePost />
-            </ProtectRoute>
+          </PrivateRoute>
         } />
         <Route path="/*" element={
           <p>Non autorisé</p>
@@ -61,4 +55,5 @@ function App() {
 }
 
 export default App
+
 

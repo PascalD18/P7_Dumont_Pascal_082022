@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
-import HeaderLogin from './HeaderLogin'
-import '../../styles/Form.css'
+import BannerLogin from './BannerLogin'
+import '../../styles/index.css'
+import './Login.css'
 
 function Login() {
   const navigate = useNavigate()
@@ -32,29 +33,25 @@ function Login() {
         localStorage.setItem('token', res.data.token)
         localStorage.setItem('userId', res.data.userId)
 
-        const authHeader={ Authorization: `Bearer ${res.data.token}` };
-        localStorage.setItem('authHeader',JSON.stringify(authHeader))
+        const authHeader = { Authorization: `Bearer ${res.data.token}` };
+        localStorage.setItem('authHeader', JSON.stringify(authHeader))
 
         if (res.request.status === 200) {
-          localStorage.setItem('authNav','Nav Ok')
+          localStorage.setItem('authNav', 'Nav Ok')
           alert("Utilisateur logé")
         }
         navigate('/AllPosts')
       })
-      .catch((err) => { alert(err)})
+      .catch((err) => { alert(err) })
 
   }
   return (
-
-    <div>
       <div>
-        <HeaderLogin />
-      </div>
-      <div className="login_sec">
-        <div className="login_grp_datas">
-          <div className="login_grp_data">
-            <label htmlFor="saisieEmail" >Email</label>
-            <input className="login"
+        <div><BannerLogin /></div>
+        <div className="L_Sect">
+          <div className="L_GrpData">
+            <label className="Label_Data" htmlFor="saisieEmail" >Email</label>
+            <input className="Text_Input"
               type="email"
               name="email"
               id="email"
@@ -62,9 +59,9 @@ function Login() {
               value={email}
               onChange={event => { setEmail(event.target.value) }} />
           </div>
-          <div className="login_grp_data">
-            <label htmlFor="saisiePassword">Password</label>
-            <input
+          <div className="L_GrpData">
+            <label className="Label_Data" htmlFor="saisiePassword">Password</label>
+            <input className="Text_Input"
               type="password"
               name="password"
               id="password"
@@ -73,12 +70,11 @@ function Login() {
               onChange={event => setPassword(event.target.value)}
             />
           </div>
-          <button onClick={handleSubmit}>Valider</button>
+          <div className="L_GrpBtn">
+            <button className="Btn_Listening" onClick={handleSubmit}>Valider</button>
+          </div>
         </div>
-
       </div>
-    </div>
-
-  )
+  );
 }
 export default Login
