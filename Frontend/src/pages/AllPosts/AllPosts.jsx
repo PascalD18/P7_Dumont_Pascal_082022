@@ -58,7 +58,7 @@ function AllPosts() {
                     .then((res) => {
 
                         //On relie les posts avec les données calculées par le backend  
-                        setPostsList(...postsList,postsList)
+                       // setPostsList(...postsList,postsList)
                         navigate('/AllPosts')
 
                     })
