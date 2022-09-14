@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useEffect } from 'react'
-import { Link,useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 //import { Navigate } from 'react-router-dom'
 import OnSelect from "../../components/OnSelect"
 import axios from 'axios'
@@ -58,8 +58,8 @@ function AllPosts() {
                     .then((res) => {
 
                         //On relie les posts avec les données calculées par le backend  
-                        return(<Link to ="/AllPosts"></Link>)
-                        
+                        setPostsList(...postsList,postsList)
+                        navigate('/AllPosts')
 
                     })
                     .catch((err) => { console.log(err) })
