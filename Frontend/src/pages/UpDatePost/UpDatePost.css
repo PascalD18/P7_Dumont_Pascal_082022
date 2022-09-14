@@ -33,28 +33,28 @@
 }
 
 /* --- Page ---*/
-.Sect{
+.U_Sect{
 	display:flex;
 	flex-direction: row;
 	flex-wrap: wrap;
-	justify-content: center;
+	justify-content: space-around;
 	height:var(--Height-section-default);
 }
-.GrpEmis{
+.U_GrpEmis{
 	display:flex;
     flex-direction:column;
 	justify-content:flex-start;
 	height:100%;
 	width:20%
 }
-.GrpEmis_ContDatas{
+.U_GrpEmis_ContDatas{
 	display:flex;
 	flex-direction:column;
 	height:fit-content;
 }
 
 
-.GrpEmis_ContDatas_ContInput,.GrpDescr,.GrpImg{
+.U_GrpEmis_ContDatas_ContInput,.GrpDescr,.GrpImg{
 	display:flex;
 	flex-direction:column;
 	align-items: center;
@@ -63,16 +63,19 @@
 	border-color: black;
 	border-style: solid;
 }
-.GrpDescr{
+.U_GrpDescr{
+	display:flex;
+	flex-direction:column;
+	align-items: center;
 	height:var(--Height-section);
 	width:39%;
 	background-color: burlywood;
 }
-.GrpImg{
+.U_GrpImg{
 	height:var(--Height-section);	
 	width:39%;
 }
-.GrpImg_ContBtn{
+.U_GrpImg_ContBtn{
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
@@ -82,7 +85,7 @@
 	width:100%;
 	background-color:cadetblue;
 }
-.GrpImg_ContImg{
+.U_GrpImg_ContImg{
 	height: 84%;
 }
 .Form_Textarea{
@@ -108,13 +111,13 @@
 
 @media screen and (max-width: 767px){/*-TELEPHONE PORTABLE LARG ECRAN < 768 PX ---------*/
 
-.GrpEmis{
+.U_GrpEmis{
 	width:200px;
 }
-.GrpDescr{
+.U_GrpDescr{
 	width:60%;
 }
-.GrpImg{
+.U_GrpImg{
 	width:95%;
 
 }

@@ -11,19 +11,11 @@ import BannerAllPosts from './BannerAllPosts'
 import './AllPosts.css'
 import '../../styles/index.css'
 
-
-
 // Affichage de tous les posts
 function AllPosts() {
     const navigate = useNavigate()
     const [postsList, setPostsList] = useState([])
-    //const [counter,setCounter] = useState(0)
-
-    //const [classeMouse, setClasseMouse] = useState('')
     const userId = localStorage.getItem('userId')
-    //const [colorThumb, setColorThumb] = useState('')
-
-
 
     useEffect((postsList) => {
         const baseUrlBack = sessionStorage.getItem("baseUrlBack");
@@ -37,12 +29,9 @@ function AllPosts() {
                 sessionStorage.setItem('Posts', JSON.stringify(postsList));
             })
             .catch((err) => { alert(err) })
-
     }, ([]));
-
     const onClickLike = (e) => {
         e.preventDefault();
-
         const headers = JSON.parse(localStorage.getItem('authHeader'))
         const baseUrlBack = sessionStorage.getItem("baseUrlBack");
 
@@ -56,74 +45,74 @@ function AllPosts() {
                 const baseUrlReadOne = `${baseUrlBack}posts/${postId}`
                 axios.get(baseUrlReadOne, { headers })
                     .then((res) => {
-
-                        //On relie les posts avec les données calculées par le backend  
-                        navigate('/AllPosts')
-
+                        window.location.reload()
                     })
                     .catch((err) => { console.log(err) })
             })
-
             .catch((err) => { console.log(err) })
-
     }
-
-    function HandleUpDate(e) {
+    const HandleUpDate = (e) => {
         e.preventDefault()
 
-        sessionStorage.setItem('PostId', e.target.dataset.postid)
-        sessionStorage.setItem('Post', e.target.dataset.post)
-
-        if (userId === e.target.dataset.userid) {
-            navigate('/UpDatePost')
-        }
-
+         //Accès à la mise à jour ou suppression
+         sessionStorage.setItem('PostId', e.target.dataset.postid)
+         sessionStorage.setItem('Post', e.target.dataset.post)
+         navigate('/UpDatePost')
     }
-
     return (
         <div>
-            <BannerAllPosts />
+            <div><BannerAllPosts /></div>
             <div className="A_Sect">
-                {postsList.lenght !== 0 ? (
-                    postsList.map((post) => (
-                        <div key={post._id} className="A_Grp">
-                            <div className="A_Grp_ContDatas">
-                                <div className="A_Grp_ContDatas_ContDataNames">
+
+                {postsList.map((post) => (
+                    <div key={post._id} className="A_Grp">
+                        <div className="A_Grp_ContDatas">
+                            <div className="A_Grp_ContDatas_ContDataNames">
+
+                                {/*On ne met un lien pour modif ou suppression
+                                   uniquement si le post corresponds à l'utilisateur connecté
+                                   ou si l'utilisateur est l'administrateur */}
+                                {(userId === post.userId || userId === process.env.ADMIN) ? (
                                     <OnSelect handleClick={HandleUpDate}>
                                         <p className="Text_Data SelectMouse"
-                                            data-post={JSON.stringify(post)}
-                                            data-postid={post._id}
-                                            data-userid={post.userId}
+                                            data-post={JSON.stringify(post)} data-postid={post._id}
                                         >
                                             {post.dateCreate}</p>
                                     </OnSelect>
-                                    <p className="Text_Data">{post.lastName}</p>
-                                    <p className="Text_Data">{post.firstName}</p>
-                                </div>
-                                <div className="A_Grp_ContImg">
-                                    <img className="img_post" src={post.imageUrl} alt="avatar"></img>
-                                </div>
-                                <textarea value="Default" className="A_Textarea">{post.description}</textarea>
+                                ) : (
+                                    <p className="A_Text_Data_Disable">{post.dateCreate}</p>
+                                )}
+                                <p className="Text_Data">{post.lastName}</p>
+                                <p className="Text_Data">{post.firstName}</p>
                             </div>
-                            <div className="A_Grp_ContLike">
-                                <div className="A_Grp_ContLike_ContCentre">
-                                    <OnSelect handleClick={onClickLike}>
-
-                                        {post.likes === 0 ? (
-                                            <i data-postid={post._id} className="fas fa-solid fa-thumbs-up Thumb ThumbGrey"></i>
-                                        ) : (
-                                            <i data-postid={post._id} className="fas fa-solid fa-thumbs-up Thumb ThumbGreen"></i>
-                                        )}
-
-                                    </OnSelect>
-                                    <p >{post.likes}</p>
-                                </div>
+                            <div className="A_Grp_ContImg">
+                                <img className="img_post" src={post.imageUrl} alt="illustration"></img>
                             </div>
+                            <textarea defaultValue={post.description}
+                                className="A_Textarea"></textarea>
                         </div>
-                    ))
-                ) : (
-                    <p>Liste de posts vide</p>
-                )}
+                        <div className="A_Grp_ContLike">
+                            <div className="A_Grp_ContLike_ContThumb">
+                                <OnSelect handleClick={onClickLike}>
+                                    {post.likes === 0 ? (
+                                        <>
+                                            <img src="/Thumb up hollow.jpg" id={post._id} data-postid={post._id} alt="thumb"
+                                                className="SelectMouse"></img>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <img src="/Thumb up green.jpg" id={post._id} data-postid={post._id} alt="thumb"
+                                                className=" img_Thumb SelectMouse"></img>
+                                        </>
+                                    )}
+                                </OnSelect>
+                            </div>
+                            <p >{post.likes}</p>
+                        </div>
+                    </div>
+
+                ))}
+
             </div>
         </div>
     )
@@ -131,4 +120,3 @@ function AllPosts() {
 
 export default AllPosts
 
-//

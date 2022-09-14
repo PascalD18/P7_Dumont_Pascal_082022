@@ -3,13 +3,15 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 exports.signup = (req, res) => {
-
+     
+    const typeuser="Admin"
     // Cryptage du mot de passe, unidirectionnel ( méthode hash')
     bcrypt.hash(req.body.password, 10)
         .then(hash => {
             const user = new User({
                 email: req.body.email,
-                password: hash
+                password: hash,
+                typeuSer : typeuser
             });
 
             // Sauvegarde l'email de l'utilisateur avec le mot de passe crypté

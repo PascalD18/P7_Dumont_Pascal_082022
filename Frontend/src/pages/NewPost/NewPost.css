@@ -33,4 +33,93 @@
 }
 
 /* --- Page ---*/
+.N_Sect{
+	display:flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	height:var(--Height-section-default);
+}
+.N_GrpEmis{
+	display:flex;
+    flex-direction:column;
+	justify-content:flex-start;
+	height:100%;
+	width:20%
+}
+.N_GrpEmis_ContDatas{
+	display:flex;
+	flex-direction:column;
+	height:fit-content;
+}
 
+
+.N_GrpEmis_ContDatas_ContInput,.GrpDescr,.GrpImg{
+	display:flex;
+	flex-direction:column;
+	align-items: center;
+	justify-content:space-around;
+    align-items: center;
+	border-color: black;
+	border-style: solid;
+}
+.N_GrpDescr{
+	display:flex;
+	flex-direction:column;
+	align-items: center;
+	height:var(--Height-section);
+	width:39%;
+	background-color: burlywood;
+}
+.N_GrpImg{
+	height:var(--Height-section);	
+	width:39%;
+}
+.N_GrpImg_ContBtn{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items:center;
+	height:15%;
+	width:100%;
+	background-color:cadetblue;
+}
+.N_GrpImg_ContImg{
+	height: 84%;
+}
+.Form_Textarea{
+	width: fit-content;
+	min-width:95%;
+	min-height: 90%;
+}
+.Btn_Img{
+	align-items:center;
+    text-align: center;
+    border-radius: 10px;
+    height:fit-content;
+    padding:5px;
+    margin:5px;
+	border-style: solid;
+    border-color: black;
+	max-width: 240px;
+}
+.Btn_Img:hover{
+ scale:1.1;
+ cursor:pointer;
+}
+
+@media screen and (max-width: 767px){/*-TELEPHONE PORTABLE LARG ECRAN < 768 PX ---------*/
+
+.N_GrpEmis{
+	width:200px;
+}
+.N_GrpDescr{
+	width:60%;
+}
+.N_GrpImg{
+	width:95%;
+
+}
+
+}

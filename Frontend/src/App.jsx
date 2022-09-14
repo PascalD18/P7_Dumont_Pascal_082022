@@ -13,7 +13,7 @@ import DeletePost from './pages/DeletePost/DeletePost'
 sessionStorage.setItem("baseUrlBack", 'http://localhost:3001/api/')
 
 // Initialisation de l'emplacement de l'image dans le backend
-sessionStorage.setItem("repImages", 'http://localhost:3001/images/')
+sessionStorage.setItem("baseUrlFront", 'http://localhost:3000/')
 
 
 // Initialisation du Header de départ pour l'entête des requêtes de l'API
@@ -37,7 +37,7 @@ function App() {
             <AllPosts />
           </PrivateRoute>
         } />
-        <Route path="/NewPost" element={
+        <Route exact path="/NewPost" element={
           <PrivateRoute>
             <NewPost />
           </PrivateRoute>

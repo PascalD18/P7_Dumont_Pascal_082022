@@ -24,7 +24,6 @@ function HomeButtons() {
               LISTE DES POSTES
             </button>
             <button className="Btn_Selected"
-              disabled='true'
             >
               NOUVEAU POSTE
             </button>

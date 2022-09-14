@@ -2,6 +2,7 @@ import { useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import BannerLogin from './BannerLogin'
+//import AllPosts from '../../pages/AllPosts/AllPosts'
 import '../../styles/index.css'
 import './Login.css'
 
@@ -12,7 +13,6 @@ function Login() {
   localStorage.clear('token')
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -38,9 +38,9 @@ function Login() {
 
         if (res.request.status === 200) {
           localStorage.setItem('authNav', 'Nav Ok')
-          alert("Utilisateur logé")
+          alert(`Utilisateur logé ${process.env.ADMIN}`)
         }
-        navigate('/AllPosts')
+          navigate('/AllPosts')
       })
       .catch((err) => { alert(err) })
 

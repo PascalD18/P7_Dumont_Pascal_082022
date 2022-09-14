@@ -78,15 +78,15 @@ function UpdatePost() {
   return (
     <div>
       <div><BannerUpDate /></div>
-        <form>
-          <div className="Sect">
-          <div className="GrpEmis">
-            <div className="GrpEmis_ContDatas">
-              <div className="GrpEmis_ContDatas_ContInput">
+      <form>
+        <div className="U_Sect">
+          <div className="U_GrpEmis">
+            <div className="U_GrpEmis_ContDatas">
+              <div className="U_GrpEmis_ContDatas_ContInput">
                 <label className="Label_Data" htmlFor="Date">Date d'émission</label>
                 <p ><span className="Text_Data">{dateAct}</span></p>
               </div>
-              <div className="GrpEmis_ContDatas_ContInput">
+              <div className="U_GrpEmis_ContDatas_ContInput">
                 <label className="Label_Data" htmlFor="Nom" >Nom</label>
                 <input className="Text_Input"
                   type="text"
@@ -96,7 +96,7 @@ function UpdatePost() {
                   onChange={event => setLastName(event.target.value)}
                 />
               </div>
-              <div className="GrpEmis_ContDatas_ContInput">
+              <div className="U_GrpEmis_ContDatas_ContInput">
                 <label className="Label_Data" htmlFor="Prénom" >Prénom</label>
                 <input className="Text_Input"
                   type="text"
@@ -108,29 +108,29 @@ function UpdatePost() {
               </div>
             </div>
           </div>
-          <div className="GrpDescr">
-          <label className="Label_Data" htmlFor="Description" >Description</label>
-          <textarea className="Form_Textarea"
-            value={description}
-            onChange={event => setDescription(event.target.value)}
-          />
+          <div className="U_GrpDescr">
+            <label className="Label_Data" htmlFor="Description" >Description</label>
+            <textarea className="Form_Textarea"
+              value={description}
+              onChange={event => setDescription(event.target.value)}
+            />
           </div>
-          <div className="GrpImg">
-            <div className="GrpImg_ContImg">
+          <div className="U_GrpImg">
+            <div className="U_GrpImg_ContImg">
               <img id="image" className="img_Descr" src={post.imageUrl} alt="avatar2"></img>
             </div>
-            <div className="GrpImg_ContBtn">
+            <div className="U_GrpImg_ContBtn">
               <input className="Btn_Img" type="file" id="image"
                 accept=".jpg,.jpeg,.png,.gif"
                 onChange={e => setImage(e.target.files[0])}
-              //document.getElementById("image").outerHTML.src=post.imageUrl}}
               />
-              <button className="Btn_Listening" onClick={handleSubmit}>VALIDER</button>
+              <button className="Btn_Listening" onClick={handleSubmit}>
+                VALIDER
+              </button>
             </div>
           </div>
-          </div>
-        </form>
-      
+        </div>
+      </form>
     </div>
   )
 };

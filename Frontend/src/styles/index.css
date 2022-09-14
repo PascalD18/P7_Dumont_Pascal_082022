@@ -88,12 +88,14 @@ button{
     font-size:10px;
     background-color:var(--tierce-bg-color);
     color : var(--tierce-txt-color);
+    
 }
 .Btn_Listening{
     text-decoration: none;
     background-color:var(--secondary-bg-color);
     color : var(--secondary-txt-color);
 }
+
 .Btn_Listening:hover{
     scale:1.1;
     cursor:pointer;
