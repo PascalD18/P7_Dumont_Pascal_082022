@@ -29,6 +29,12 @@ function BannerUpDate() {
           >
             MODIFICATION DE POST
           </button>
+          <button className="Btn_Listening"
+            data-nav="/DeletePost"
+            onClick={onClickHandler}
+          >
+            SUPPRESSION DE POST
+          </button>
         </div>
         <button className="Btn_Listening"
           data-nav="/"

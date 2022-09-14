@@ -7,6 +7,7 @@ import Signup from './pages/Signup/Signup'
 import AllPosts from './pages/AllPosts/AllPosts'
 import NewPost from './pages/NewPost/NewPost'
 import UpDatePost from './pages/UpDatePost/UpDatePost'
+import DeletePost from './pages/DeletePost/DeletePost'
 
 //Initialisation de l'URL de base pour le routage de l'API
 sessionStorage.setItem("baseUrlBack", 'http://localhost:3001/api/')
@@ -31,7 +32,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route exact path="/Login" element={<Login />} />
         <Route path="/Signup" element={<Signup />} />
-        <Route path="/AllPosts" element={
+        <Route exact path="/AllPosts" element={
           <PrivateRoute>
             <AllPosts />
           </PrivateRoute>
@@ -44,6 +45,11 @@ function App() {
         <Route exact path="/UpdatePost" element={
           <PrivateRoute>
             <UpDatePost />
+          </PrivateRoute>
+        } />
+          <Route exact path="/DeletePost" element={
+          <PrivateRoute>
+            <DeletePost />
           </PrivateRoute>
         } />
         <Route path="/*" element={
