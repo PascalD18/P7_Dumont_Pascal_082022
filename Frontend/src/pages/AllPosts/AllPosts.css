@@ -36,7 +36,9 @@
 .A_Sect{
     display:flex;
     flex-direction: column;
-    height:val(--Height-section-default);
+    border:6px solid;
+    height:100%;
+    background-color: aquamarine;
 }
 .A_Grp{
     display:flex;
@@ -44,9 +46,9 @@
     flex:wrap;
     justify-content: space-around;
     align-items:flex-start;
-    border-style: solid;
+    border:6px solid;
     border-width: 1px;
-    height:40%;
+    height:fit-content;
     width:100%;
 
 }
@@ -54,20 +56,32 @@
     display:flex;
      flex-wrap:wrap;
     flex-direction:row;
-    justify-content:space-around;
-    height:100%;
+    justify-content:center;
+    align-items:center;
+    height:fit-content;
+    border:6px solid;
     width:90%;
-}
-.A_Grp_ContDatas_ContDataNames{
+  }
+.A_Grp_ContDatas_ContEmis{
     display:flex;
     flex-direction:column;
-    justify-content:space-around;
-    height:150px;
-    width:20%;
+    justify-content:flex-start;
+    border:3px solid;
+    height:var(--Height-HtLigne-default);
+    width:230px;
+}
+.A_Grp_ContDatas_ContEmis_ContDate{
+    display:flex;
+    flex-direction:row;
+    justify-content:flex-start;
+    margin:auto;
+    height:fit-content;
 }
 .A_Grp_ContImg{
-    height:150px;
-    width:200px;
+    border:3px solid;
+    margin:auto;
+    height: 150px;
+    width:150px;
 }
 
 .A_Grp_ContLike{
@@ -75,7 +89,9 @@
     flex-direction: column;
     justify-content:center;
     align-items:center;
-    height:150px;
+    border:6px solid;
+    margin:auto;
+    height:156px;
     width:150px;
     background-color:antiquewhite;
 }
@@ -92,7 +108,7 @@
 }
 .A_Textarea{
     height:150px;
-    width:px;
+    
 }
 @media screen and (max-width: 767px){/*-TELEPHONE PORTABLE LARG ECRAN < 768 PX ---------*/
     .A_Textarea{
@@ -100,7 +116,7 @@
 }
 }
 @media screen and (min-width: 768px){/*-TABLETTE ET DESKTOP LARG > 767 PX ---------*/
-    .A_Textarea{
-        width:55%;
+   .A_Textarea{
+        width:400px;
     }
 }

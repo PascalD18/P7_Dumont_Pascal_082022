@@ -16,11 +16,6 @@ function BannerAllPosts() {
       <h1 className="Title">Boite à idées</h1>
       <div className="B_GrpBtn">
       <div className="B_GrpBtn_ContLeft">
-            <button className="Btn_Listening"
-            enabled='false'
-          >
-            LISTE DES POSTES
-          </button>
           <button className="Btn_Listening"
             data-nav="/NewPost"
             onClick={onClickHandler}
@@ -28,6 +23,7 @@ function BannerAllPosts() {
             NOUVEAU POSTE
           </button>
         </div>
+        <h2>LISTE DE TOUS LES POSTES</h2>
         <button className="Btn_Listening"
           data-nav="/"
           onClick={onClickHandler}

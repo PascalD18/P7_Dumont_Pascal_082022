@@ -10,10 +10,11 @@
   --font-size-title:40px;
   --height-section-connexion:100px;
   --Height-section-default:500px;
+  --Height-HtLigne-default:150px;
 }
 /* --- Mises en forme globales --*/
 body {
-    max-width: 1350px;
+    max-width: 1000px;
     margin: auto;
     font-family: 'Lato', arial;
   -webkit-font-smoothing: antialiased;
@@ -36,6 +37,18 @@ img[class^="img_"]{
   background-color: var(--secondary-bg-color);
   padding:5px;
   margin:3px;
+}
+
+.Label_Data_Disable{
+ font-weight: 100;
+ margin:2px;
+ color:var(--secondary-bg-color);
+ background-color: var(--tierce-bg-color);
+}
+.Text_Data_Disable{
+  color:var(--tierce-txt-color);
+   background-color:var(--tierce-bg-color);
+   margin:2px;
 }
 
 .Text_Input{

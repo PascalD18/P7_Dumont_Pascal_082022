@@ -11,32 +11,30 @@ import './NewPost.css'
 function NewPost() {
   const baseUrlBack = sessionStorage.getItem("baseUrlBack");
   const baseUrl = `${baseUrlBack}posts/`
-  const userId = localStorage.getItem("userId")
-  const [lastName, setLastName] = useState('');
-  const [firstName, setFirstName] = useState('');
-  const [description, setDescription] = useState('');
+  const userId = sessionStorage.getItem('userId')
+  const usersList= JSON.parse(sessionStorage.getItem("usersList"))
+  const [description, setDescription] = useState('')
   const [image, setImage] = useState()
+  const [imageDisplay,setImageDisplay] = useState()
   const dateAct = Dayjs().format("YYYY-MM-DD")
-  const [StateBtnSubmit,setStateBtnSubmit] = useState(true)
+  const [disableBtnSubmit, setDisableBtnSubmit] = useState(true)
   const navigate = useNavigate()
-   
-  const UpDateStatusBtn = e => {
-    e.preventDefault()
-    setImage(e.target.files[0])
-    
-    document.getElementById("BtnSubmit").className = "Btn_Listening"
-    setStateBtnSubmit(false)
 
+  const onImageChangeURL = (e) => {
+    if (e.target.files && e.target.files[0]) {
+      setImageDisplay(URL.createObjectURL(e.target.files[0]))
+      setImage(e.target.files[0])
+      setDisableBtnSubmit(false)
+    }
   }
+
   const handleSubmit = e => {
     e.preventDefault()
-
-    const headers = JSON.parse(localStorage.getItem('authHeader'))
+    setDisableBtnSubmit(false)
+    //Création du post
+    const headers = JSON.parse(sessionStorage.getItem('authHeader'))
     const postJson = {
-      userId: userId,
       dateCreate: dateAct,
-      lastName: lastName,
-      firstName: firstName,
       description: description
     }
 
@@ -65,26 +63,9 @@ function NewPost() {
               <div className="N_GrpEmis_ContDatas_ContInput">
                 <label className="Label_Data" htmlFor="Date">Date d'émission</label>
                 <p ><span className="Text_Data">{dateAct}</span></p>
-              </div>
-              <div className="N_GrpEmis_ContDatas_ContInput">
-                <label className="Label_Data" htmlFor="Nom" >Nom</label>
-                <input className="Text_Input"
-                  type="text"
-                  placeholder="Nom"
-                  nom="lastName"
-                  value={lastName}
-                  onChange={event => setLastName(event.target.value)}
-                />
-              </div>
-              <div className="N_GrpEmis_ContDatas_ContInput">
-                <label className="Label_Data" htmlFor="Prénom" >Prénom</label>
-                <input className="Text_Input"
-                  type="text"
-                  placeholder="Prénom"
-                  id="Nom"
-                  value={firstName}
-                  onChange={event => setFirstName(event.target.value)}
-                />
+                <p ><span className="Text_Data">
+                {usersList.find(el => el._id === userId).email}
+                </span></p>
               </div>
             </div>
           </div>
@@ -97,17 +78,18 @@ function NewPost() {
           </div>
           <div className="N_GrpImg">
             <div className="N_GrpImg_ContImg">
-              <>
-                {image === undefined &&
-                  <img src="/avatar.jpg" alt="avatar"></img>
-                }</>
+              <input type="file" onChange={onImageChangeURL} className="img_Post"
+                accept=".jpg,.jpeg,.png,.gif"
+              />
+              {imageDisplay === undefined ? (
+                <img src="/avatar.jpg" className="img_Post" alt="ilustration"></img>
+              ) : (
+                <img src={`${imageDisplay}`} className="img_Post" alt="ilustration"></img>
+              )
+              }
             </div>
             <div className="N_GrpImg_ContBtn">
-              <input className="Btn_Img" type="file" id="image"
-                accept=".jpg,.jpeg,.png,.gif"
-                onChange={UpDateStatusBtn}
-              />
-              <button id="BtnSubmit" disabled={StateBtnSubmit} onClick={handleSubmit}>
+              <button id="BtnSubmit" disabled={disableBtnSubmit} onClick={handleSubmit}>
                 VALIDER
               </button>
             </div>

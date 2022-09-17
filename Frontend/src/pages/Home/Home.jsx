@@ -5,13 +5,25 @@ import './Home.css'
 import '../../styles/index.css'
 
 const Home = () => {
-  localStorage.clear('token')
+
+  sessionStorage.clear('usersList')
+  sessionStorage.clear('userId')
+  sessionStorage.clear('Post')
+  sessionStorage.clear('usersList')
+  sessionStorage.clear('userId')
+  sessionStorage.clear('authHeader')
+
+
+
+
+
   const navigate = useNavigate()
-
-
+  sessionStorage.setItem("baseUrlBack", 'http://localhost:3001/api/')
+ 
   const onClickHandler = (e) => {
     navigate(e.target.dataset.nav)
   }
+
   return (
 
     <div className="B_Sect">

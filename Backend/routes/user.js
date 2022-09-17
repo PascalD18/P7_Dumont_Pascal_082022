@@ -7,5 +7,6 @@ const max = require('../midleware/limiter')
 
 router.post('/signup', loginValidator.email, loginValidator.password, userCtrl.signup);
 router.post('/login', max.limiter, loginValidator.email, userCtrl.login);
+router.get('/', userCtrl.getAllUsers);
 
 module.exports = router;

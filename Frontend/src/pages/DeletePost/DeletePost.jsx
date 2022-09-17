@@ -9,20 +9,13 @@ function DeletePost() {
 
     // Supprime un post
     useEffect(() => {
-        //const postDelete=JSON.parse(postSelected)
-        const postDelete = JSON.parse(sessionStorage.getItem('Post'))
-        const postId = postDelete._id;
+        const postId = sessionStorage.getItem('PostId')
         const baseUrlBack = sessionStorage.getItem("baseUrlBack")
         const baseUrl = `${baseUrlBack}posts/${postId}`
-        const headers=JSON.parse(localStorage.getItem('authHeader'))
+        const headers=JSON.parse(sessionStorage.getItem('authHeader'))
         axios.delete(baseUrl, { headers })
             .then(() => {
                 alert("post supprimé")
-                if (postDelete.length === 0) {
-                    sessionStorage.setItem('StatePosts', "vide")
-                } else {
-                    sessionStorage.setItem('StatePosts', "non vide")
-                }
                 navigate('/AllPosts')
             })
             .catch((err) => { console.log(err) })

@@ -16,21 +16,12 @@
 }
 .B_GrpBtn{
 	display: flex;
-	justify-content:space-between;
+	justify-content:space-around;
 	flex-wrap: wrap;
 	align-items: center;
     height:fit-content;
 }
-.B_GrpBtn_ContLeft {
-	display: flex;
-	justify-content:space-between;
-	flex-direction: row;
-	justify-content: center;
-	align-items: center;
-	height:fit-content;
-	width:fit-content;
-    padding:5px;
-}
+
 
 /* --- Page ---*/
 .U_Sect{
@@ -38,23 +29,19 @@
 	flex-direction: row;
 	flex-wrap: wrap;
 	justify-content: space-around;
+	border:6px solid;
 	height:var(--Height-section-default);
+	background-color:cadetblue;
 }
 .U_GrpEmis{
 	display:flex;
     flex-direction:column;
-	justify-content:flex-start;
-	height:100%;
-	width:20%
-}
-.U_GrpEmis_ContDatas{
-	display:flex;
-	flex-direction:column;
-	height:fit-content;
+	align-items: center;
+	height:var(--Height-section-default);
+	width:60%;
 }
 
-
-.U_GrpEmis_ContDatas_ContInput,.GrpDescr,.GrpImg{
+.U_GrpImg{
 	display:flex;
 	flex-direction:column;
 	align-items: center;
@@ -62,18 +49,43 @@
     align-items: center;
 	border-color: black;
 	border-style: solid;
+	height:var(--Height-section-default);
 }
 .U_GrpDescr{
 	display:flex;
 	flex-direction:column;
 	align-items: center;
+	justify-content: center;
+	border:3px solid;
+	height:100%;
+	width:100%;
+}
+
+.U_GrpEmis_ContDatas{
+	display:flex;
+	flex-direction:row;
+	flex-wrap: wrap;
+}
+.U_GrpEmis_ContDatas_ContContained{
+ display:flex;
+ flex-direction:column;
+ justify-content:center;
+ align-items: center;
+ border:3px solid;
+ border-color: black;
+
+}
+.U_GrpEmis_ContDescr{
+	display:flex;
+	flex-direction:column;
+	align-items: center;
 	height:var(--Height-section);
 	width:39%;
-	background-color: burlywood;
 }
 .U_GrpImg{
 	height:var(--Height-section);	
 	width:39%;
+	height:var(--Height-section-default);
 }
 .U_GrpImg_ContBtn{
 	display: flex;
@@ -83,7 +95,6 @@
 	align-items:center;
 	height:15%;
 	width:100%;
-	background-color:cadetblue;
 }
 .U_GrpImg_ContImg{
 	height: 84%;
@@ -91,7 +102,7 @@
 .Form_Textarea{
 	width: fit-content;
 	min-width:95%;
-	min-height: 90%;
+	height:90%;
 }
 .Btn_Img{
 	align-items:center;

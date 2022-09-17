@@ -44,12 +44,14 @@ exports.modifyPost = (req, res) => {
       // Si oui, définit le nouvel Url avec le nom unique de l'image selectionnée
       imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
 
-      // Sinon, renseigne le formulaire sauf 'imageUrl'
-    } : { ...req.body }
+      // Sinon, renseigne le post sauf 'imageUrl' et l'userId propriétaire du post
+    } : {
+       ...req.body
+      }
 
-  //Vérifie si l'utilisateur corresponds à la requéte
+  //Vérifie si l'utilisateur corresponds à celui qui a envoyé la requête
   //if (req.body.userId != req.auth.userId) {
-    if ((postObject.userId !== req.auth.userId) && (req.auth.userId !== process.env.ADMIN_ID)){
+    if (postOject.userId !== req.auth.userId){
     res.status(401).json({ message: 'Not authorized' });
   } else {
 
@@ -71,7 +73,7 @@ exports.modifyPost = (req, res) => {
       });
   }
 
-  // Met à jour le formulaire
+  // Met à jour le post
   Post.updateOne({ _id: req.params.id }, { ...postObject, _id: req.params.id })
     .then(() => res.status(200).json({ message: 'Post modifié!' }))
     .catch(error => res.status(401).json({ error }))
@@ -106,14 +108,15 @@ exports.likedNoLiked = (req, res) => {
 exports.deletePost = (req, res) => {
   Post.findOne({ _id: req.params.id })
     .then(post => {
-      if (post.userId != req.auth.userId  && req.auth.userId !== process.env.ADMIN_ID) {
+      if (post.userId != req.auth.userId) {
         res.status(401).json({ message: 'Not authorized' });
       } else {
         const filename = post.imageUrl.split('/images/')[1];
         fs.unlink(`images/${filename}`, () => {
           Post.deleteOne({ _id: req.params.id })
             .then(() => res.status(204).json({ message: 'Post supprimé !' }))
-            .catch(error => res.status(400).json({ error }));
+            .catch(error => res.status(400).json({ error }
+              ));
         });
       }
     })

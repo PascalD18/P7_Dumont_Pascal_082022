@@ -23,11 +23,8 @@ function HomeButtons() {
             >
               LISTE DES POSTES
             </button>
-            <button className="Btn_Selected"
-            >
-              NOUVEAU POSTE
-            </button>
           </div>
+          <h2>CRÉATION D'UN NOUVEAU POST</h2>
           <button className="Btn_Listening"
             data-nav="/"
             onClick={onClickHandler}

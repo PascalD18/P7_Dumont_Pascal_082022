@@ -39,6 +39,7 @@
 	flex-wrap: wrap;
 	justify-content: space-around;
 	height:var(--Height-section-default);
+	background-color: burlywood;
 }
 .N_GrpEmis{
 	display:flex;
@@ -69,9 +70,12 @@
 	align-items: center;
 	height:var(--Height-section);
 	width:39%;
-	background-color: burlywood;
+
 }
 .N_GrpImg{
+	display:flex;
+	flex-direction: column;
+	justify-content:space-between;
 	height:var(--Height-section);	
 	width:39%;
 }
@@ -79,11 +83,9 @@
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
-	justify-content: space-between;
-	align-items:center;
-	height:15%;
+	justify-content: center;
+	height:fit-content;
 	width:100%;
-	background-color:cadetblue;
 }
 .N_GrpImg_ContImg{
 	height: 84%;

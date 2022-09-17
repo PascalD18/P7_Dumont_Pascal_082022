@@ -38,7 +38,7 @@ mongoose.connect('mongodb+srv://Dpascal18-1:Mdpmondodbdpascal18-1-2022@clusterdp
 // Définie un emplacement static pour la gestion des images de sauce
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
-// Définition des accés racine pour les routes Sauces et utilisateurs
+// Définition des accès racine pour les routes Sauces et utilisateurs
 app.use('/api/posts', postRoutes);
 app.use('/api/auth', userRoutes);
 

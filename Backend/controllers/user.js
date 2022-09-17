@@ -3,15 +3,23 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 exports.signup = (req, res) => {
-     
-    const typeuser="Admin"
+
+     // Attribue un type d'utilisateur en fonction de l'email
+     if (req.body.email === `${process.env.ADMIN}`)
+     {
+        typeUser="Admin"
+     }else{
+        typeUser ="User"
+     }
     // Cryptage du mot de passe, unidirectionnel ( méthode hash')
     bcrypt.hash(req.body.password, 10)
         .then(hash => {
             const user = new User({
                 email: req.body.email,
                 password: hash,
-                typeuSer : typeuser
+
+                // définit le type d'utilisateur en fonction de son email
+                typeUser : typeUser
             });
 
             // Sauvegarde l'email de l'utilisateur avec le mot de passe crypté
@@ -42,11 +50,14 @@ exports.login = (req, res) => {
                     // et limite sa validité à 24h
                     res.status(200).json({
                         userId: user._id,
+                        email : user.email,
                         token: jwt.sign(
                             { userId: user._id },
                             `${process.env.TOKEN_SECRET}`,
-                            { expiresIn: '24h' }
-                        )
+                            { expiresIn: '24h' } ),
+
+                        // en indiquant également si il il s'agit d'un administrateur ou non
+                        typeUser : user.typeUser
                     });
                 })
                 .catch(error => res.status(500).json({ error })
@@ -54,3 +65,10 @@ exports.login = (req, res) => {
         })
         .catch(error => res.status(500).json({ error }));
 };
+// Lecture de tous les utilisateurs
+exports.getAllUsers = (req, res) => {
+    User.find()
+      .then(post => res.status(200).json(post))
+      .catch(error => res.status(400).json({ error: error }))
+  }
+  
