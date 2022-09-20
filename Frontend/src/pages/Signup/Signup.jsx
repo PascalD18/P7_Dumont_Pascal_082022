@@ -1,12 +1,13 @@
 import { useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
-import BannerSignup from './BannerSignup'
+import Banner from '../../components/Banner'
+import NavSignup from './NavSignup'
+import '../../styles/index.css'
 import './Signup.css'
 
 function Signup() {
   const navigate = useNavigate()
-  //sessionStorage.clear('token')
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -41,7 +42,7 @@ function Signup() {
           data: obj
         })
           .then((res) => {
-            //sessionStorage.setItem('token', res.data.token)
+
             sessionStorage.setItem('userId', res.data.userId)
 
             // Mémorise le type d'utilisateur
@@ -62,7 +63,7 @@ function Signup() {
                 sessionStorage.setItem('usersList', JSON.stringify(res.data))
               })
               .catch((err) => { console.log(err) })
-              
+
             // Affichage de tous les postes
             navigate('/AllPosts')
           })
@@ -70,14 +71,12 @@ function Signup() {
 
       })
       .catch((err) => { alert(err) })
-
-
-
   }
 
   return (
     <div>
-      <div><BannerSignup /></div>
+      <div><Banner /></div>
+      <div><NavSignup /></div>
       <div className="S_Sect">
         <div className="S_GrpData">
           <label className="Label_Data" htmlFor="saisieEmail" >Email</label>

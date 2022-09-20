@@ -1,33 +1,8 @@
-.B_Sect{
+.HNav_Sect{
  display:flex;
  flex-direction: row;
  justify-content:center;
  align-items:center;
  flex-wrap:wrap;
-}
-.Logo{
-	height:var(--size-height-logo);
-	margin:10px;
-}
-.Title{
- font-size:var(--font-size-title);
- margin:10px;
-}
-.B_GrpBtn{
-	display: flex;
-	justify-content:flex-end;
-	flex-wrap: wrap;
-	align-items: center;
-    height:fit-content;
-    width:100%;
-
-}
-.B_GrpBtn_ContRight {
-	display: flex;
-	justify-content:space-between;
-	flex-direction: row;
-	flex-wrap: wrap;
-	align-items: center;
-	width:fit-content;
-    padding:5px;
+ width:100%;
 }

@@ -8,7 +8,7 @@ const userRoutes = require('./routes/user');
 const app = express();
 app.use(express.json());
 
-const cors =require('cors')
+const cors = require('cors')
 app.use(cors())
 
 app.use(helmet({
@@ -16,7 +16,7 @@ app.use(helmet({
 }));
 
 // Configuration de l'entete de la requete
-app.use((req,res, next) => {
+app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
@@ -26,8 +26,8 @@ app.use((req,res, next) => {
 // Connexion de la base de données 'mongoose' - Projet P7 - Clusterdp18
 mongoose.connect('mongodb+srv://Dpascal18-1:Mdpmondodbdpascal18-1-2022@clusterdp18.hy52wqp.mongodb.net/?retryWrites=true&w=majority',
 
-// Connexion de la base de données 'mongoose' - Projet PASCAL DUMONT 18 - Clusterdp18
-//mongoose.connect('mongodb+srv://Dpascal18-2:Mdpmondodbdpascal18-22022@cluster0.tqjqjtr.mongodb.net/?retryWrites=true&w=majority',
+  // Connexion de la base de données 'mongoose' - Projet PASCAL DUMONT 18 - Clusterdp18
+  //mongoose.connect('mongodb+srv://Dpascal18-2:Mdpmondodbdpascal18-22022@cluster0.tqjqjtr.mongodb.net/?retryWrites=true&w=majority',
   {
     useNewUrlParser: true,
     useUnifiedTopology: true

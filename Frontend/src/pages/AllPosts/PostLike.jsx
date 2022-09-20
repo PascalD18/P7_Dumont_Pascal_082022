@@ -1,5 +1,5 @@
 
-import {useState} from 'react'
+import { useState } from 'react'
 import axios from 'axios'
 import OnSelect from "../../components/OnSelect"
 
@@ -33,20 +33,14 @@ function PostLike({ like, postId }) {
         <>
             <OnSelect handleClick={onClickLike}>
                 {resultLike === 0 ? (
-                    
-                        <img src="/Thumb up hollow.jpg" alt="thumb"
-                            className="SelectMouse"></img>
-                    
+                    <img src="/Thumb up hollow.jpg" alt="thumb"
+                        className="SelectMouse"></img>
                 ) : (
-                    
-                        <img src="/Thumb up green.jpg"  alt="thumb"
-                            className=" img_Thumb SelectMouse"></img>
-                    
+                    <img src="/Thumb up green.jpg" alt="thumb"
+                        className=" img_Thumb SelectMouse"></img>
                 )}
-                
-
             </OnSelect>
-            <p id={`Like{${postId}}`} className="Text_Data">{resultLike}</p>
+            <p id={`Like{${postId}}`} className="A_Text_Like">{resultLike}</p>
         </ >
     )
 

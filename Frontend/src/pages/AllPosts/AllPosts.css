@@ -1,122 +1,141 @@
 /* --- Banner ---*/
-.B_Sect{
-    display:flex;
+.ANav_Sect {
+    display: flex;
     flex-direction: row;
-    justify-content:center;
-    align-items:center;
-    flex-wrap:wrap;
-   }
-   .Logo{
-       height:var(--size-height-logo);
-       margin:10px;
-   }
-   .Title{
-	font-size:var(--font-size-title);
-	margin:10px;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
 }
-   .B_GrpBtn{
-   
-       display: flex;
-       justify-content:flex-end;
-       flex-wrap: wrap;
-       align-items: center;
-       height:fit-content;
-       width:100%;
-   
-   }
-   .B_GrpBtn_ContRight {
-       display: flex;
-       justify-content:space-between;
-       flex-direction: row;
-       align-items: center;
-       height:95%;
-       padding:5px;
-   }
+
 /* --- Page ---*/
-.A_Sect{
-    display:flex;
+.A_Sect {
+    display: flex;
     flex-direction: column;
-    border:6px solid;
-    height:100%;
+    height: 100%;
     background-color: aquamarine;
 }
-.A_Grp{
-    display:flex;
-    flex-direction:row;
-    flex:wrap;
+
+.A_Grp {
+    display: flex;
+    flex-direction: row;
+    flex: wrap;
     justify-content: space-around;
-    align-items:flex-start;
-    border:6px solid;
-    border-width: 1px;
-    height:fit-content;
-    width:100%;
+    align-items: flex-start;
+    border: 2px solid;
+    height: fit-content;
+    width: 100%;
 
 }
-.A_Grp_ContDatas{
-    display:flex;
-     flex-wrap:wrap;
-    flex-direction:row;
-    justify-content:center;
-    align-items:center;
-    height:fit-content;
-    border:6px solid;
-    width:90%;
-  }
-.A_Grp_ContDatas_ContEmis{
-    display:flex;
-    flex-direction:column;
-    justify-content:flex-start;
-    border:3px solid;
-    height:var(--Height-HtLigne-default);
-    width:230px;
-}
-.A_Grp_ContDatas_ContEmis_ContDate{
-    display:flex;
-    flex-direction:row;
-    justify-content:flex-start;
-    margin:auto;
-    height:fit-content;
-}
-.A_Grp_ContImg{
-    border:3px solid;
-    margin:auto;
-    height: 150px;
-    width:150px;
+
+.A_Grp_ContDatas {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
+    width: 90%;
 }
 
-.A_Grp_ContLike{
-    display:flex;
+.A_Grp_ContDatas_ContEmis {
+    display: flex;
     flex-direction: column;
-    justify-content:center;
-    align-items:center;
-    border:6px solid;
-    margin:auto;
-    height:156px;
-    width:150px;
-    background-color:antiquewhite;
+    justify-content: flex-start;
+    height: var(--Height-HtLigne-default);
+    min-width: 260px;
 }
-.A_Grp_ContLike_ContThumb{
-    height:35%;
-    width:35%;
-   }
 
-.Thumb{
-    scale:2;
+.A_Grp_ContDatas_ContEmis_ContDate {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin: auto;
+    height: fit-content;
 }
-.A_Text_Data_Disable{
-    background-color:cadetblue;
+
+.A_Grp_ContImg {
+    margin: auto;
+    height: var(--Height-HtLigne-default);
+    min-width: 260px;
 }
-.A_Textarea{
-    height:150px;
-    
+
+.A_Grp_ContLike {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    height: 156px;
+    width: 80px;
 }
-@media screen and (max-width: 767px){/*-TELEPHONE PORTABLE LARG ECRAN < 768 PX ---------*/
-    .A_Textarea{
-    width:100%;
+
+.A_Grp_ContLike_ContThumb {
+    height: 35%;
+    width: 35%;
 }
+
+.Thumb {
+    scale: 2;
 }
-@media screen and (min-width: 768px){/*-TABLETTE ET DESKTOP LARG > 767 PX ---------*/
-   .A_Textarea{
-        width:400px;
+
+.A_Text_Data_Disable {
+    background-color: cadetblue;
+}
+
+.A_Text_Like {
+    font-weight: 800;
+    text-align: center;
+    margin: 3px;
+}
+
+.A_Textarea {
+    height: 150px;
+}
+
+@media screen and (max-width: 630px) {
+    .A_Grp_ContDatas_ContEmis {
+        height: fit-content;
+        width: 100%;
+    }
+
+    .ANav_Sect {
+        flex-wrap: nowrap;
+    }
+
+    .A_Grp_ContDatas {
+        flex-wrap: wrap;
+    }
+
+    .A_Grp_ContImg {
+        width: 100%;
+    }
+
+    .A_Textarea {
+        height: 200px;
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 631px)and (max-width:767px) {
+    .A_Grp_ContDatas {
+        flex-wrap: wrap;
+    }
+
+    .A_Grp_ContDatas {
+        flex-wrap: wrap;
+    }
+
+    .A_Grp_ContImg {
+        width: 48%;
+    }
+
+    .A_Textarea {
+
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .A_Textarea {
+        width: 50%;
     }
 }

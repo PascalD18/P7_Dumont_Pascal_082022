@@ -1,69 +1,66 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useEffect } from 'react'
-//import UpDatePost from '../UpDatePost/UpDatePost'
-//import UpDatePost from '../UpDatePost/UpDatePost';
 
 function DisplayBtnUpdate({ typeUser, userConnect, userPost, post, postId }) {
     const navigate = useNavigate()
     const [authDisplay, setAuthDisplay] = useState(false)
-
+    const usersList = JSON.parse(sessionStorage.getItem('usersList'))
 
     useEffect(() => {
-        // function DefDisplay() {
-        // Définie l'autorisation de modif ou suppression 'authUpdate' en fonction de :
-        // L'utilisateur connecté (userId) = Émetteur du Post ( userPost )
-        // Ou si l'utilisateur connecté est administrateur ( typeUser = "Admin")
-        if ((userConnect === userPost && typeUser !== "Admin") 
-        || 
-        (userConnect !== userPost && typeUser === "Admin")
-        ||
-        (userConnect === userPost && typeUser === "Admin")  )
-        {
+
+        // Affiche ou non , les boutons 'MODIFICATION' et 'SUPPRESSION' en fonction de:
+        // Uniquement si l'utilisateur non administrateur est propriétaire du post
+        // ou
+        // Pour l'administrateur, qu'il soit propriétaire ou non
+        if ((typeUser !== "Admin" && userConnect === userPost)
+            ||
+            (typeUser === "Admin" && userConnect !== userPost)
+            ||
+            (typeUser === "Admin" && userConnect === userPost)) {
             setAuthDisplay(true)
             return
         } else {
             setAuthDisplay(false)
         }
+    }, [typeUser, userConnect, userPost]);
 
-    },[typeUser,userConnect,userPost]);
-
-     const onClickUpDatePost =(e) => {
+    const onClickUpDatePost = (e) => {
         e.preventDefault()
-        
-        sessionStorage.setItem('Post',e.target.dataset.post)
-        navigate('/UpDatePost')
-     }
-     const onClickDeletePost = (e) => {
-        e.preventDefault()
-         sessionStorage.setItem('PostId',e.target.dataset.postid)
-         navigate('/DeletePost')
-
-     }
-
+        sessionStorage.setItem('Post', e.target.dataset.post)
+        sessionStorage.setItem('typeForm', 'UpDate')
+        navigate('/FormNewUpDate')
+    }
+    const onClickDeletePost = (e) => {
+        var email = usersList.find(el => el._id === post.userId).email
+        var res = window.confirm(`Confirmez-vous la suppression du post émis le ${post.dateCreate} par ${email} ?`)
+        if (res) {
+            sessionStorage.setItem('PostId', e.target.dataset.postid)
+            navigate('/DeletePost');
+        } else {
+            alert("Post non supprimé");
+        }
+    }
     return (
         <div>
-
             {authDisplay === true && (
                 <>
-                <button id={`M${postId}`} className="Btn_Listening"
-                 data-post={JSON.stringify(post)}
-                    onClick={onClickUpDatePost}
-                >
-                    MODIFICATION
-                </button>
-                <div>                
-                            <button id={`S${postId}`} className="Btn_Listening"
+                    <button id={`M${postId}`} className="Btn_Listening"
+                        data-post={JSON.stringify(post)}
+                        onClick={onClickUpDatePost}
+                    >
+                        MODIFICATION
+                    </button>
+                    <div>
+                        <button id={`S${postId}`} className="Btn_Listening"
                             data-postid={postId}
                             onClick={onClickDeletePost}
-                           >
-                               SUPPRESSION
-                           </button>
-                           </div>
-
-                           </>      
+                        >
+                            SUPPRESSION
+                        </button>
+                    </div>
+                </>
             )}
-    
         </div>)
 }
 export default DisplayBtnUpdate

@@ -1,11 +1,9 @@
-//import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
-import Logo from '../../assets/img/global/icon-logo_groupomania.png'
+import Banner from '../../components/Banner'
 import './Home.css'
 import '../../styles/index.css'
 
 const Home = () => {
-
   sessionStorage.clear('usersList')
   sessionStorage.clear('userId')
   sessionStorage.clear('Post')
@@ -13,24 +11,23 @@ const Home = () => {
   sessionStorage.clear('userId')
   sessionStorage.clear('authHeader')
 
-
-
-
-
+  // Initialisation du Header de départ pour l'entête des requêtes de l'API
+  const baseHeader = {
+    "Accept": `application/json`,
+    "Accept-Language": `fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3`,
+    "Content-type": `application/json; charset=utf-8`
+  }
+  sessionStorage.setItem('baseHeader', JSON.stringify(baseHeader))
   const navigate = useNavigate()
   sessionStorage.setItem("baseUrlBack", 'http://localhost:3001/api/')
- 
   const onClickHandler = (e) => {
     navigate(e.target.dataset.nav)
   }
-
   return (
-
-    <div className="B_Sect">
-      <img src={Logo} alt='Groupomania' className="Logo" />
-      <h1 className="Title">Boite à idées</h1>
-      <div className="B_GrpBtn">
-        <div className="B_GrpBtn_ContRight">
+    <div>
+      <div><Banner /></div>
+      <div>
+        <div className="HNav_Sect">
           <button className="Btn_Listening"
             data-nav="/Signup"
             onClick={onClickHandler}

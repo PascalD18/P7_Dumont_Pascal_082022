@@ -1,15 +1,10 @@
 import { useState } from 'react'
 import { useEffect } from 'react'
-//import { useNavigate } from 'react-router-dom'
-//import { Navigate } from 'react-router-dom'
-//import OnSelect from "../../components/OnSelect"
 import axios from 'axios'
-//import useForceUpdate from 'use-force-update'
-import BannerAllPosts from './BannerAllPosts'
+import Banner from '../../components/Banner'
+import NavAllPosts from './NavAllPosts'
 import PostLike from './PostLike'
 import DisplayBtnUpDate from './DisplayBtnUpdate'
-//import ListingPosts from './ListingPosts'
-//import SelectList from './SelectList'
 import './AllPosts.css'
 import '../../styles/index.css'
 
@@ -19,7 +14,9 @@ const AllPosts = () => {
     const usersList = JSON.parse(sessionStorage.getItem('usersList'))
     const userId = sessionStorage.getItem('userId')
 
-    useEffect((postsList) => {
+
+    useEffect(() => {
+
         const baseUrlBack = sessionStorage.getItem("baseUrlBack");
         const headers = JSON.parse(sessionStorage.getItem('authHeader'))
 
@@ -31,11 +28,12 @@ const AllPosts = () => {
                 sessionStorage.setItem('Posts', JSON.stringify(postsList));
             })
             .catch((err) => { alert(err) })
-    }, ([]));
+    }, ([postsList]));
 
     return (
         <div>
-            <div><BannerAllPosts /></div>
+            <div><Banner /></div>
+            <div><NavAllPosts /></div>
             <div className="A_Sect">
                 {postsList.map((post) => (
                     <div key={post._id} className="A_Grp">
@@ -49,7 +47,6 @@ const AllPosts = () => {
                                 <p className="Text_Data_Disable">
                                     {usersList.find(el => el._id === post.userId).email}
                                 </p>
-
                                 {/*  // Appel le composant qui affichera ou non les boutons de modification et suppression   */}
                                 <DisplayBtnUpDate typeUser={usersList.find(el => el._id === userId).typeUser}
                                     userConnect={userId} userPost={post.userId} post={post} postId={post._id} />
@@ -57,8 +54,8 @@ const AllPosts = () => {
                             <div className="A_Grp_ContImg">
                                 <img className="img_post" src={post.imageUrl} alt="illustration"></img>
                             </div>
-                            <textarea defaultValue={post.description}
-                                className="A_Textarea"></textarea>
+                            <textarea defaultValue={post.description} disabled="disabled"
+                                className="A_Textarea Textarea"></textarea>
                         </div>
                         <div className="A_Grp_ContLike">
                             <div className="A_Grp_ContLike_ContThumb">
@@ -67,11 +64,9 @@ const AllPosts = () => {
                         </div>
                     </div>
                 ))}
-
             </div>
         </div>
     )
 };
 
 export default AllPosts
-

@@ -1,52 +1,41 @@
 /* --- Banner ---*/
-.B_Sect{
- display:flex;
- flex-direction: row;
- justify-content:center;
- align-items:center;
- flex-wrap:wrap;
-}
-.Logo{
-	height:var(--size-height-logo)px;
-    margin:10px;
-}
-.Title{
-	font-size:var(--font-size-title)px;
-	margin:10px;
-}
-.B_GrpBtn{
+.SNav_Sect {
 	display: flex;
-	justify-content:flex-end;
-	flex-wrap: wrap;
-	align-items: center;
-    height:fit-content;
-}
-.B_GrpBtn_ContRight {
-	display: flex;
-	justify-content:space-between;
 	flex-direction: row;
-	justify-content: center;
+	justify-content: space-around;
 	align-items: center;
-	width:fit-content;
-    padding:5px;
-}
-/* --- Page ---*/
-.S_Sect{
-	display:flex;
-	flex-direction:row;
-	align-items:center;
-	height:100px;
+	flex-wrap: wrap;
+	background-color: var(--secondary-bg-color);
+
 }
 
-.S_Grp_Data{
-	display:flex;
-	flex-direction:column;
-	align-items:center;
-	height:80px;
-}
-.S_GrpBtn{
-	width:100%;
+.SContSubTitle {
 	display: flex;
-	justify-content:flex-start;
+	flex-direction: row;
+	justify-content: center;
+	font-weight: 800;
+	width: 80%;
+	background-color: var(--secondary-bg-color);
+}
+
+/* --- Page ---*/
+.S_Sect {
+	display: flex;
+	flex-direction: row;
 	align-items: center;
- }
+	height: 100px;
+}
+
+.S_Grp_Data {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	height: 80px;
+}
+
+.S_GrpBtn {
+	width: 100%;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}

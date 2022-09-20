@@ -1,0 +1,22 @@
+/* --- Mise en forme du Banner pour toutes les pages ----*/
+.B_Sect{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items:center;
+    flex-wrap: wrap;
+}
+.B_ContLogo{
+ Height:100%;
+    width:350px;
+}
+.Logo{
+scale:0.9;
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+.Title{
+  font-size: 30px;
+  margin: 0;
+}

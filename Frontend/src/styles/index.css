@@ -1,22 +1,21 @@
 /*--- Variables globales */
-:root{
-  --primary-bg-color:#FD2D01;
-  --primary-txt-color:white;
-  --secondary-bg-color:#FFD7D7;
-  --secondary-txt-color:Black;
-  --tierce-bg-color:#4E5166;
-  --tierce-txt-color:white;
-  --size-height-logo:70px;
-  --font-size-title:40px;
-  --height-section-connexion:100px;
-  --Height-section-default:500px;
-  --Height-HtLigne-default:150px;
+:root {
+  --primary-bg-color: #FD2D01;
+  --primary-txt-color: white;
+  --secondary-bg-color: #FFD7D7;
+  --secondary-txt-color: Black;
+  --tierce-bg-color: #4E5166;
+  --tierce-txt-color: white;
+  --height-section-connexion: 100px;
+  --Height-section-default: 400px;
+  --Height-HtLigne-default: 150px;
 }
+
 /* --- Mises en forme globales --*/
 body {
-    max-width: 1000px;
-    margin: auto;
-    font-family: 'Lato', arial;
+  max-width: 1000px;
+  margin: auto;
+  font-family: 'Lato', arial;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -26,90 +25,101 @@ code {
     monospace;
 }
 
-img[class^="img_"]{
+img[class^="img_"] {
   object-fit: cover;
   height: 100%;
   width: 100%;
 }
 
-.Label_Data,.Text_Data {
-  color:var( --secondary-txt-color);
+.Label_Data,
+.Text_Data {
+  color: var(--secondary-txt-color);
   background-color: var(--secondary-bg-color);
-  padding:5px;
-  margin:3px;
+  padding: 5px;
+  margin: 3px;
 }
 
-.Label_Data_Disable{
- font-weight: 100;
- margin:2px;
- color:var(--secondary-bg-color);
- background-color: var(--tierce-bg-color);
-}
-.Text_Data_Disable{
-  color:var(--tierce-txt-color);
-   background-color:var(--tierce-bg-color);
-   margin:2px;
+.Text_Data {
+  font-weight: 800;
 }
 
-.Text_Input{
-  color:var( --secondary-txt-color);
-  border-style:solid;
+.SubTitle {
+  font-size: 20px;
+  font-weight: 800;
+  margin: 10px;
+}
+
+.Label_Data_Disable {
+  font-weight: 100;
+  margin: 2px;
+  color: var(--secondary-bg-color);
+  background-color: var(--tierce-bg-color);
+}
+
+.Text_Data_Disable {
+  color: var(--tierce-txt-color);
+  background-color: var(--tierce-bg-color);
+  margin: 2px;
+}
+
+.Text_Input {
+  color: var(--secondary-txt-color);
+  border-style: solid;
   border-width: 3px;
   border-color: var(--secondary-bg-color);
-  padding:5px;
-  margin:3px;
+  padding: 5px;
+  margin: 3px;
 }
-.Form_Textarea{
-  font-size:20px;
+
+.Textarea {
+  font-size: 20px;
+  font-weight: 800;
 }
 
 .SelectMouse:hover {
   scale: 1.1;
   cursor: pointer;
 }
-.Hidden{
-  visibility:hidden;
+
+.Hidden {
+  visibility: hidden;
 }
-.Visible{
-  visibility:visible;
+
+.Visible {
+  visibility: visible;
 }
+
 /*------- Mise en forme des boutons -----*/
 
-button{
-    display:flex;
-    flex-direction:column;
-    justify-content: center;
-    align-items:center;
-    text-align: center;
-    border-radius: 10px;
-    height:fit-content;
-    padding:5px;
-    margin:5px;
-    font-size: 15px;
-    border-style: solid;
-    border-color: black;
+button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 10px;
+  height: fit-content;
+  padding: 5px;
+  margin: 5px;
+  font-size: 15px;
+  border-style: solid;
+  border-color: black;
 }
 
-.Btn_Selected{
-    text-decoration: none;
-    font-weight: 800;
-    background-color:var(--primary-bg-color);
-    color : var(--primary-txt-color);
-    
-}
-.Btn_Disable{
-    font-size:10px;
-    background-color:var(--tierce-bg-color);
-    color : var(--tierce-txt-color);
-    
-}
-.Btn_Listening{
-    text-decoration: none;
-    background-color:var(--secondary-bg-color);
-    color : var(--secondary-txt-color);
+.Btn_Disable {
+  font-size: 10px;
+  background-color: var(--tierce-bg-color);
+  color: var(--tierce-txt-color);
+
 }
 
-.Btn_Listening:hover{
-    scale:1.1;
-    cursor:pointer;
+.Btn_Listening {
+  text-decoration: none;
+  background-color: var(--secondary-bg-color);
+  color: var(--secondary-txt-color);
+}
+
+.Btn_Listening:hover {
+  scale: 1.1;
+  cursor: pointer;
 }
