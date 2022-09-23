@@ -1,8 +1,19 @@
-.HNav_Sect{
- display:flex;
- flex-direction: row;
- justify-content:center;
- align-items:center;
- flex-wrap:wrap;
- width:100%;
+/* --- NavConnect ---*/
+.H_Nav_Sect {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+	flex-wrap: wrap;
+	background-color: var(--secondary-bg-color);
+
+}
+
+.H_ContSubTitle {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	font-weight: 800;
+	width: 80%;
+	background-color: var(--secondary-bg-color);
 }

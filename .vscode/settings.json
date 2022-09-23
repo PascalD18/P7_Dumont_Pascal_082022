@@ -1,0 +1,7 @@
+{
+    "editor.renderWhitespace": "none",
+    "editor.accessibilityPageSize": 100,
+    "editor.fontSize": 14,
+    "editor.fontFamily": "Arial, 'Courier New',monospace",
+    "explorer.compactFolders":false,
+}

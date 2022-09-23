@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom'
+import { setGlobalState} from '../../components/StateGlobal'
 import Dayjs from 'dayjs'
 import './AllPosts.css'
 import '../../styles/index.css'
@@ -9,7 +10,7 @@ function NavAllPosts() {
   const onClickHandler = (e) => {
     const nav = `${e.target.dataset.nav}`
     if (nav === `/`) { navigate(nav) }
-    sessionStorage.setItem('typeForm', "NewPost")
+   setGlobalState('typeForm','NewPost')
     const dateAct = Dayjs().format('YYYY-MM-DD')
     const post = {
       dateCreate: dateAct,

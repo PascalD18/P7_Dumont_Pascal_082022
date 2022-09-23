@@ -1,41 +1,35 @@
 import { useNavigate } from 'react-router-dom'
 import Banner from '../../components/Banner'
-import './Home.css'
+import { setGlobalState } from '../../components/StateGlobal'
 import '../../styles/index.css'
+import './Home.css'
 
 const Home = () => {
+  const navigate = useNavigate()
+
+  //Réinitialise les variables globales
   sessionStorage.clear('usersList')
   sessionStorage.clear('userId')
   sessionStorage.clear('Post')
-  sessionStorage.clear('usersList')
-  sessionStorage.clear('userId')
-  sessionStorage.clear('authHeader')
+  setGlobalState('authHeader', '_')
 
-  // Initialisation du Header de départ pour l'entête des requêtes de l'API
-  const baseHeader = {
-    "Accept": `application/json`,
-    "Accept-Language": `fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3`,
-    "Content-type": `application/json; charset=utf-8`
-  }
-  sessionStorage.setItem('baseHeader', JSON.stringify(baseHeader))
-  const navigate = useNavigate()
-  sessionStorage.setItem("baseUrlBack", 'http://localhost:3001/api/')
   const onClickHandler = (e) => {
-    navigate(e.target.dataset.nav)
+    setGlobalState("typeConnect", e.target.dataset.typeconnect)
+    navigate('/FormConnect')
   }
   return (
     <div>
       <div><Banner /></div>
       <div>
-        <div className="HNav_Sect">
+        <div className="H_Nav_Sect">
           <button className="Btn_Listening"
-            data-nav="/Signup"
+            data-typeconnect="Signup"
             onClick={onClickHandler}
           >
             INSCRIPTION
           </button>
           <button className="Btn_Listening"
-            data-nav="/Login"
+            data-typeconnect="Login"
             onClick={onClickHandler}
           >
             CONNEXION

@@ -5,6 +5,7 @@ import Banner from '../../components/Banner'
 import NavAllPosts from './NavAllPosts'
 import PostLike from './PostLike'
 import DisplayBtnUpDate from './DisplayBtnUpdate'
+import { useGlobalState } from '../../components/StateGlobal'
 import './AllPosts.css'
 import '../../styles/index.css'
 
@@ -13,22 +14,20 @@ const AllPosts = () => {
     const [postsList, setPostsList] = useState([])
     const usersList = JSON.parse(sessionStorage.getItem('usersList'))
     const userId = sessionStorage.getItem('userId')
+    const baseUrlBack = useGlobalState("baseUrlBack")
+    const authBearer=useGlobalState('authBearer')
 
-
-    useEffect(() => {
-
-        const baseUrlBack = sessionStorage.getItem("baseUrlBack");
-        const headers = JSON.parse(sessionStorage.getItem('authHeader'))
-
+    useEffect((postsList) => {
         //1ére Requête de tous les postes
-        const baseUrlPosts = `${baseUrlBack}posts/`
+        const baseUrlPosts = `${baseUrlBack[0]}posts/`
+        const headers=authBearer[0]
         axios.get(baseUrlPosts, { headers })
             .then((res) => {
                 setPostsList(res.data);
                 sessionStorage.setItem('Posts', JSON.stringify(postsList));
             })
             .catch((err) => { alert(err) })
-    }, ([postsList]));
+    }, ([baseUrlBack, authBearer]));
 
     return (
         <div>
@@ -47,7 +46,8 @@ const AllPosts = () => {
                                 <p className="Text_Data_Disable">
                                     {usersList.find(el => el._id === post.userId).email}
                                 </p>
-                                {/*  // Appel le composant qui affichera ou non les boutons de modification et suppression   */}
+
+                                {/*  // Appel le composant qui affichera ou non les boutons de modification et suppression */}
                                 <DisplayBtnUpDate typeUser={usersList.find(el => el._id === userId).typeUser}
                                     userConnect={userId} userPost={post.userId} post={post} postId={post._id} />
                             </div>
@@ -59,6 +59,8 @@ const AllPosts = () => {
                         </div>
                         <div className="A_Grp_ContLike">
                             <div className="A_Grp_ContLike_ContThumb">
+
+                                {/*  // Appel le composant qui gère les likes */}
                                 <PostLike like={post.likes} postId={post._id} />
                             </div>
                         </div>
@@ -68,5 +70,4 @@ const AllPosts = () => {
         </div>
     )
 };
-
 export default AllPosts

@@ -34,7 +34,7 @@ exports.modifyPost = (req, res) => {
       // Sinon, renseigne le formulaire sauf 'imageUrl'
     } : { ...req.body }
 
-  //Vérifie si l'utilisateur corresponds à la requéte
+  //Vérifie si l'utilisateur corresponds à la requête
   if ((postObject.userId !== req.auth.userId) && (req.auth.userId !== process.env.ADMIN_ID)) {
     //res.status(401).json({ message: 'Not authorized' });
     res.status(401).json(alert('Utilisateur non autorisé'));

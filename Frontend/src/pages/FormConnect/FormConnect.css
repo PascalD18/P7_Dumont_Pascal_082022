@@ -1,0 +1,34 @@
+/* --- Page ---*/
+.FC_Sect {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height:350px;
+}
+.FC_GrpNav{
+	display:flex;
+	flex-direction:row;
+	justify-content:space-around;
+	flex-wrap: wrap;
+	width:100%;
+}
+.FC_GrpDatas {
+	display: flex;
+	flex-direction: column;
+	justify-content:flex-start;
+	width: 100%;
+}
+.FC_GrpDatas_ContData {
+	display: flex;
+	flex-direction: column;
+	justify-content:flex-start;
+	width: 50%;
+	height:100px;
+}
+.FC_GrpBtn {
+	width: 100%;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}

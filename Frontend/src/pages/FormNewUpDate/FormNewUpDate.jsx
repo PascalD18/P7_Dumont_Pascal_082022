@@ -3,34 +3,39 @@ import axios from 'axios'
 import Dayjs from 'dayjs'
 import { useNavigate } from 'react-router-dom'
 import Banner from '../../components/Banner'
-import NavNew from './NavNew'
-import NavUpDate from './NavUpDate'
+import NavNewUpDate from './NavNewUpDate'
+import { useGlobalState } from '../../components/StateGlobal'
 import '../../styles/index.css'
 import './FormNewUpDate.css'
 
 function FormPost() {
   const navigate = useNavigate()
-  const typeForm = sessionStorage.getItem('typeForm')
+  const typeForm = useGlobalState('typeForm')
   const post = JSON.parse(sessionStorage.getItem('Post'))
   const usersList = JSON.parse(sessionStorage.getItem('usersList'))
   const userId = sessionStorage.getItem('userId')
   const [image, setImage] = useState()
   const [imageDisplay, setImageDisplay] = useState()
   const [description, setDescription] = useState('');
-  const headers = JSON.parse(sessionStorage.getItem('authHeader'))
-  const baseUrlBack = sessionStorage.getItem("baseUrlBack");
+  const authHeader = useGlobalState('authHeader')
+  const baseUrlBack = useGlobalState('baseUrlBack')
 
-  useEffect(() => {
+  useEffect((image) => {
+    document.getElementById("description").innerHTML = post.description
     const elemBtnSubmit = document.getElementById('Btn_Submit')
-    if (typeForm === 'NewPost') {
-      elemBtnSubmit.className = "Btn_Disable"
-      elemBtnSubmit.disabled = true
+    if (typeForm[0] === 'NewPost') {
+      if (imageDisplay === undefined) {
+        elemBtnSubmit.className = "Btn_Disable"
+        elemBtnSubmit.disabled = true
+      } else {
+        elemBtnSubmit.className = "Btn_Listening"
+        elemBtnSubmit.disabled = false
+      }
     } else {
       elemBtnSubmit.className = "Btn_Listening"
       elemBtnSubmit.disabled = false
     }
-    setDescription(post.description)
-  }, ([typeForm, post.description]))
+  }, ([typeForm, post.description, image,imageDisplay]))
 
   const onImageChangeURL = (e) => {
     e.preventDefault()
@@ -45,7 +50,7 @@ function FormPost() {
   }
 
   const onClickValidate = (e) => {
-    if (typeForm === 'NewPost') {
+    if (typeForm[0] === 'NewPost') {
 
       // Sauvegarde d'un nouveau post
       const dateAct = Dayjs().format("YYYY-MM-DD")
@@ -53,18 +58,18 @@ function FormPost() {
         dateCreate: dateAct,
         description: description
       }
-      const baseUrl = `${baseUrlBack}posts/`
+      const baseUrl = `${baseUrlBack[0]}posts/`
       const postLinea = JSON.stringify(postJson)
       const postData = new FormData()
       postData.append("post", postLinea)
       postData.append('image', image)
+      const headers = authHeader[0]
       axios.post(baseUrl, postData, { headers })
         .then((res) => {
           sessionStorage.setItem('Post', JSON.stringify(post))
-
+          alert("nouveau post créé")
         })
         .catch((err) => { console.log(err) })
-      alert("nouveau post créé")
       navigate('/AllPosts')
     } else {
 
@@ -73,12 +78,14 @@ function FormPost() {
         userId: post.userId,
         description: description
       }
-      const baseUrl = `${baseUrlBack}posts/${post._id}`
+      const baseUrl = `${baseUrlBack[0]}posts/${post._id}`
+      const headers = authHeader[0]
       if (image === undefined) {
         // Sans l'image
         axios.put(baseUrl, postJson, { headers })
-          .then((res) => {
+          .then(() => {
             sessionStorage.setItem('Post', JSON.stringify(post))
+
           })
           .catch((err) => { alert(err) })
         alert("post modifié")
@@ -93,9 +100,9 @@ function FormPost() {
         axios.put(baseUrl, postData, { headers })
           .then((res) => {
             sessionStorage.setItem('Post', JSON.stringify(post))
+            alert("post modifié")
           })
           .catch((err) => { alert(err) })
-        alert("post modifié")
         navigate('/AllPosts')
       }
     }
@@ -103,15 +110,11 @@ function FormPost() {
   return (
     <div>
       <div><Banner /></div>
-      {typeForm === "NewPost" ? (
-        <div><NavNew /></div>
-      ) : (
-        <div><NavUpDate /></div>
-      )}
+      <div><NavNewUpDate /></div>
       <form>
-        <div className="F_Sect">
-          <div className="F_GrpImg">
-            <div className="F_GrpImg_ContImg">
+        <div className="UN_Sect">
+          <div className="UN_GrpImg">
+            <div className="UN_GrpImg_ContImg">
               <input type="file" onChange={onImageChangeURL}
                 accept=".jpg,.jpeg,.png,.gif"
               />
@@ -121,28 +124,28 @@ function FormPost() {
                 <img className="img_Post" src={`${imageDisplay}`} id="image" alt="illustration"></img>
               )}
             </div>
-            <div className="F_GrpImg_ContBtn">
+            <div className="UN_GrpImg_ContBtn">
               <button id="Btn_Submit" onClick={onClickValidate}>VALIDER</button>
             </div>
           </div>
-          <div className="F_GrpEmis">
-            <div className="F_GrpEmis_ContDatas">
-              <div className="F_GrpEmis_ContDatas_Data">
-                <label className="F_Label_Data Label_Data" htmlFor="Date">Date d'émission</label>
-                <p ><span className="F_Text_Data Text_Data">{post.dateCreate}</span></p>
+          <div className="UN_GrpEmis">
+            <div className="UN_GrpEmis_ContDatas">
+              <div className="UN_GrpEmis_ContDatas_Data">
+                <label className="UN_Label_Data Label_Data" htmlFor="Date">Date d'émission</label>
+                <p ><span className="UN_Text_Data Text_Data">{post.dateCreate}</span></p>
               </div>
-              <div className="F_GrpEmis_ContDatas_Data">
-                <label className="F_Label_Data Label_Data" htmlFor="Email">Email Utilisateur</label>
-                {typeForm === "NewPost" ? (
-                  <p ><span className="F_Text_Data Text_Data"> {usersList.find(el => el._id === userId).email}</span></p>
+              <div className="UN_GrpEmis_ContDatas_Data">
+                <label className="UN_Label_Data Label_Data" htmlFor="Email">Email Utilisateur</label>
+                {typeForm[0] === "NewPost" ? (
+                  <p ><span className="UN_Text_Data Text_Data"> {usersList.find(el => el._id === userId).email}</span></p>
                 ) : (
-                  <p ><span className="F_Text_Data Text_Data"> {usersList.find(el => el._id === post.userId).email}</span></p>
+                  <p ><span className="UN_Text_Data Text_Data"> {usersList.find(el => el._id === post.userId).email}</span></p>
                 )}
               </div>
             </div>
-            <div className="F_GrpDescr">
+            <div className="UN_GrpDescr">
               <label className="Label_Data" htmlFor="Description" >Description</label>
-              <textarea className="F_Textarea Textarea"
+              <textarea className="UN_Textarea Textarea" id="description"
                 value={description}
                 onChange={event => setDescription(event.target.value)}
               />

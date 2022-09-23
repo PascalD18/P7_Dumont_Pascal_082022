@@ -9,7 +9,7 @@
 }
 
 /* --- Page ---*/
-.F_Sect {
+.UN_Sect {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
@@ -19,7 +19,7 @@
 	background-color: cadetblue;
 }
 
-.F_GrpEmis {
+.UN_GrpEmis {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -27,7 +27,7 @@
 	width: 60%;
 }
 
-.F_GrpImg {
+.UN_GrpImg {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -37,7 +37,7 @@
 	height: var(--Height-section-default);
 }
 
-.F_GrpDescr {
+.UN_GrpDescr {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -46,7 +46,7 @@
 	width: 100%;
 }
 
-.F_GrpEmis_ContDatas {
+.UN_GrpEmis_ContDatas {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;
@@ -56,7 +56,7 @@
 	width: 100%;
 }
 
-.F_GrpEmis_ContDatas_Data {
+.UN_GrpEmis_ContDatas_Data {
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
@@ -65,7 +65,7 @@
 
 }
 
-.F_GrpEmis_ContDescr {
+.UN_GrpEmis_ContDescr {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -73,14 +73,14 @@
 	width: 39%;
 }
 
-.F_GrpImg {
+.UN_GrpImg {
 	border: 2px solid;
 	height: var(--Height-section);
 	width: 39%;
 	height: var(--Height-section-default);
 }
 
-.F_GrpImg_ContBtn {
+.UN_GrpImg_ContBtn {
 	display: flex;
 	flex-direction: column;
 	flex-wrap: wrap;
@@ -90,7 +90,7 @@
 	width: 100%;
 }
 
-.F_GrpImg_ContImg {
+.UN_GrpImg_ContImg {
 	height: 90%;
 }
 
@@ -99,16 +99,16 @@
 	cursor: pointer;
 }
 
-.F_Label_Data {
+.UN_Label_Data {
 	margin: 0px;
 }
 
-.F_Text_Data {
+.UN_Text_Data {
 	margin: 0px;
 	width: 300px;
 }
 
-.F_Textarea {
+.UN_Textarea {
 	min-width: 95%;
 	height: 90%;
 }
@@ -121,44 +121,44 @@
 		justify-content: center;
 	}
 
-	.F_Sect {
+	.UN_Sect {
 		Height: fit-content;
 	}
 
-	.F_GrpImg {
+	.UN_GrpImg {
 		height: calc(var(--Height-section-default)/2);
 		width: 48%;
 	}
 
-	.F_Btn {
+	.UN_Btn {
 		margin: 0px;
 	}
 
-	.F_GrpEmis {
+	.UN_GrpEmis {
 		align-items: center;
 		height: 100%;
 		width: 100%;
 	}
 
-	.F_GrpDescr {
+	.UN_GrpDescr {
 		height: 80%;
 		width: 100%;
 	}
 
-	.F_GrpImg_ContImg {
+	.UN_GrpImg_ContImg {
 		height: 70%;
 	}
 
-	.F_GrpEmis_ContDatas {
+	.UN_GrpEmis_ContDatas {
 		flex-wrap: wrap;
 	}
 
-	.F_GrpEmis_ContDatas_Data {
+	.UN_GrpEmis_ContDatas_Data {
 		flex-direction: column;
 		flex-wrap: wrap;
 	}
 
-	.F_GrpDescr {
+	.UN_GrpDescr {
 		height: calc(var(--Height-section-default)/2);
 		width: 100%;
 	}
