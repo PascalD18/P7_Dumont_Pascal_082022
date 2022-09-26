@@ -28,7 +28,7 @@ const AllPosts = () => {
         sessionStorage.setItem('Posts', JSON.stringify(postsList));
     })
     .catch((err) => { alert(err) })
-}, ([]));
+},([]));
 
     return (
         <div>

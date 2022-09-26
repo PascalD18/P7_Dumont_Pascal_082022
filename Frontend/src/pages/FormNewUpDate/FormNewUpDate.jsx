@@ -17,7 +17,7 @@ function FormPost() {
   const [image, setImage] = useState()
   const [imageDisplay, setImageDisplay] = useState()
   const [description, setDescription] = useState('')
-    const authHeader = useGlobalState('authHeader')
+  const authHeader = useGlobalState('authHeader')
   const baseUrlBack = useGlobalState('baseUrlBack')
 
 
@@ -42,17 +42,20 @@ function FormPost() {
     e.preventDefault()
     setDescription(document.getElementById("description").innerHTML)
     if (e.target.files && e.target.files[0]) {
+
+      // Si une nouvelle image est choisie => Remplace l'image sélectionnée
       setImageDisplay(URL.createObjectURL(e.target.files[0]))
       setImage(e.target.files[0])
       let elem = document.getElementById("Btn_Submit")
       elem.className = "Btn_Listening"
       elem.disabled = false
       sessionStorage.setItem('image', image)
-       }
+    }
   }
 
   const onClickValidate = (e) => {
     e.preventDefault()
+
     if (typeForm[0] === 'NewPost') {
 
       // Sauvegarde d'un nouveau post
@@ -69,11 +72,12 @@ function FormPost() {
       const headers = authHeader[0]
       axios.post(baseUrl, postData, { headers })
         .then((res) => {
-          sessionStorage.setItem('Post', JSON.stringify(post))
-          alert("nouveau post créé")
+          if (res.request.status === 201) {
+            alert("Nouveau post créé");
+            navigate('/AllPosts')
+          }
         })
         .catch((err) => { console.log(err) })
-      navigate(-1)
     } else {
 
       // Mise à jour après validation en mode MODIFICATION ('TypeForm' = 'UpDate')
@@ -84,14 +88,15 @@ function FormPost() {
       const baseUrl = `${baseUrlBack[0]}posts/${post._id}`
       const headers = authHeader[0]
       if (image === undefined) {
+
         // Sans l'image
-        sessionStorage.setItem('Post', JSON.stringify(post))
         axios.put(baseUrl, postJson, { headers })
           .then((res) => {
-            alert('Post modifié')
+            if (res.request.status === 200) {
+              navigate('/AllPosts')
+            }
           })
           .catch((err) => { alert(err) })
-        navigate(-1)
       } else {
 
         //Avec l'image
@@ -99,13 +104,13 @@ function FormPost() {
         const postData = new FormData()
         postData.append("post", postLinea)
         postData.append('image', image)
-
         axios.put(baseUrl, postData, { headers })
           .then((res) => {
-            alert("post modifié")
+            if (res.request.status === 200) {
+              navigate('/AllPosts')
+            }
           })
           .catch((err) => { alert(err) })
-        navigate(-1)
       }
     }
   }
