@@ -55,7 +55,7 @@ exports.login = (req, res) => {
                             `${process.env.TOKEN_SECRET}`,
                             { expiresIn: '24h' }),
 
-                        // en indiquant également si il il s'agit d'un administrateur ou non
+                        // Ajoute le type d'utilisateur (administrateur ou non)
                         typeUser: user.typeUser
                     });
                 })

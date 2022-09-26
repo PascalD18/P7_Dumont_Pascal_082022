@@ -11,7 +11,7 @@ const Home = () => {
   sessionStorage.clear('usersList')
   sessionStorage.clear('userId')
   sessionStorage.clear('Post')
-  setGlobalState('authHeader', '_')
+
 
   const onClickHandler = (e) => {
     setGlobalState("typeConnect", e.target.dataset.typeconnect)

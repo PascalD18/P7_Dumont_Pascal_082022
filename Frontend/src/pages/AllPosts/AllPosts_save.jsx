@@ -16,7 +16,8 @@ const AllPosts = () => {
     const userId = sessionStorage.getItem('userId')
     const baseUrlBack = useGlobalState("baseUrlBack")
     const authBearer=useGlobalState('authBearer')
-  
+    const test=JSON.parse(sessionStorage.getItem('Post'))
+
 
     useEffect((postsList) => {
         //1ére Requête de tous les postes
@@ -55,7 +56,7 @@ const AllPosts = () => {
                             <div className="A_Grp_ContImg">
                                 <img className="img_post" src={post.imageUrl} alt="illustration"></img>
                             </div>
-                            <textarea id={post._id} disabled="disabled" 
+                            <textarea id={post.id} disabled="disabled" 
                                 className="A_Textarea Textarea">
                                     {post.description}
                                 </textarea>

@@ -9,6 +9,7 @@ const { setGlobalState, useGlobalState } = createGlobalState({
       typeForm: '_',
       typeConnect: '_',
       authHeader:'_',
-      authBearer:'_'
+      authBearer:'_',
+      counter:0
 })
 export { useGlobalState, setGlobalState }

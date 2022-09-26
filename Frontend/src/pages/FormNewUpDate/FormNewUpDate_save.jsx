@@ -49,10 +49,12 @@ function FormPost() {
       elem.disabled = false
       sessionStorage.setItem('image', image)
        }
+
   }
 
   const onClickValidate = (e) => {
     e.preventDefault()
+
     if (typeForm[0] === 'NewPost') {
 
       // Sauvegarde d'un nouveau post
@@ -73,10 +75,11 @@ function FormPost() {
           alert("nouveau post créé")
         })
         .catch((err) => { console.log(err) })
-      navigate(-1)
+      navigate('/AllPosts')
     } else {
 
       // Mise à jour après validation en mode MODIFICATION ('TypeForm' = 'UpDate')
+
       const postJson = {
         userId: post.userId,
         description: document.getElementById("description").defaultValue
@@ -85,13 +88,14 @@ function FormPost() {
       const headers = authHeader[0]
       if (image === undefined) {
         // Sans l'image
-        sessionStorage.setItem('Post', JSON.stringify(post))
         axios.put(baseUrl, postJson, { headers })
           .then((res) => {
+            sessionStorage.setItem('Post', JSON.stringify(post))
             alert('Post modifié')
           })
           .catch((err) => { alert(err) })
-        navigate(-1)
+          sessionStorage.setItem('Post', JSON.stringify(post))
+        navigate('/AllPosts')
       } else {
 
         //Avec l'image
@@ -99,13 +103,13 @@ function FormPost() {
         const postData = new FormData()
         postData.append("post", postLinea)
         postData.append('image', image)
-
         axios.put(baseUrl, postData, { headers })
           .then((res) => {
+            sessionStorage.setItem('Post', JSON.stringify(post))
             alert("post modifié")
           })
           .catch((err) => { alert(err) })
-        navigate(-1)
+        navigate('/AllPosts')
       }
     }
   }

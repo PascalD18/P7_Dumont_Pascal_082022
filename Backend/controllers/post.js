@@ -40,7 +40,7 @@ exports.modifyPost = (req, res) => {
     res.status(401).json(alert('Utilisateur non autorisé'));
   } else {
 
-    // Si oui, et si une image a été selectionnée ( ou même reselectionnée !)
+    // Si oui, et si une image a été sélectionnée ( ou même resélectionnée !)
     if (req.file !== undefined) {
       // Efface l'ancien fichier correspondant à l'image avant MAJ
       Post.findOne({ _id: req.params.id })
