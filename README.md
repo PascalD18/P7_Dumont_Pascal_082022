@@ -1,4 +1,4 @@
-# Boite à idées ## GROUPOMANIA
+# Boite à idées GROUPOMANIA
 ## Utilisation
  * Création, modification et suppression de posts, autorisé uniquement pour l'utilisateur émetteur.
  * Chaque post contient un texte et une image
