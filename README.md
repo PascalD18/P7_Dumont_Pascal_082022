@@ -4,10 +4,10 @@
  * Chaque post contient un texte et une image
  * Possibilité de liker ou non un post 1 fois seulement par utilisateur
  * Possibilité de modification et suppression de tous les posts par   
-    l'adminastrateur
+    l'adminIstrateur
 ---
 ## 1ére Installation du Backend et Frontend
-* chaque dossier .../__Backend__ et .../__Frontend__  
+* Pour chaque dossier .../__Backend__ et .../__Frontend__  
  Installer node.js en tapant '__npm install__'
 ---
 ## Lancement
