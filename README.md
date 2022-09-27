@@ -1,4 +1,4 @@
-# Boite à idées GROUPOMANIA
+# Boite à idées ![logo](https://github.com/PascalD18/P7_Dumont_Pascal_082022/frontend/src/assets/img/global/icon-logo_groupomania.png)
 ## Utilisation
  * Création, modification et suppression de posts, autorisé uniquement pour l'utilisateur émetteur.
  * Chaque post contient un texte et une image
