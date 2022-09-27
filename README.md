@@ -1,15 +1,26 @@
-# Groupomania #
+# Boite à idées GROUPOMANIA
+## Utilisation
+ * Création, modification et suppression de posts, autorisé uniquement pour l'utilisateur émetteur.
+ * Chaque post contient un texte et une image
+ * Possibilité de liker ou non un post 1 fois seulement par utilisateur
+ * Possibilité de modification et suppression de tous les posts par   
+    l'adminastrateur
+---
+## 1ére Installation du Backend et Frontend
+* chaque dossier .../__Backend__ et .../__Frontend__  
+ Installer node.js en tapant '__npm install__'
+---
+## Lancement
+1. __Backend__  
+Se positionner dans le repertoire ../Backend puis
+taper __nodemon server__  
+Le serveur se lance en local à l'adresse *'http:/localhost:3001/'*
+2. __Frontend__  
+Se positionner dans le repertoire ../frontend puis taper __run start__  
+le front écrit en React se compile et se lance automatiquement en local  
+à l'adresse *'http:/localhost:3000/'*
+---
+### Nota:
 
-This is the front end and back end server for Project 5 of the Web Developer path.
-
-### Back end Prerequisites ###
-
-You will need to have Node and `npm` installed locally on your machine.
-
-### Back end Installation ###
-
-Clone this repo. From the "back" folder of the project, run `npm install`. You 
-can then run the server with `node server`. 
-The server should run on `localhost` with default port `3001`. If the
-server runs on another port for any reason, this is printed to the
-console when the server starts, e.g. `Listening on port 3001`.
+* Base de donnéee externe sur MongoDB
+* Identifiant admibistrateur situé dans le sous répertoire __.env__ du backend.
