@@ -65,7 +65,12 @@ const FormConnect = () => {
           } else if (err.response.status === 429) {
             alert("Trop de tentatives: merci de patienter 2 mn pour cet utilisateur")
           } else {
-            alert(err)
+            if (err.response.data.message === undefined){
+               alert(err.response.data.error)
+            }else{
+                alert(err.response.data.message)
+            }
+          
           }
         })
 
@@ -142,9 +147,7 @@ const FormConnect = () => {
           if (err.response.status === 401) {
             alert("Utilisateur déjà existant")
           } else if (err.response.status === 400) {
-            alert(`Le mot de passe ne corresponds pas à l'utilisateur ou n'est pas valide 
-            ( au moins 8  digits avec au minimum: 
-              1 chiffre, 1 minuscule, 1 majuscule et 1 caractère spécial )`)
+            alert(err.response.data.message)
           } else {
             alert(err)
           }
