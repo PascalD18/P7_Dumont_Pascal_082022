@@ -36,10 +36,12 @@ img[class^="img_"] {
   background-color: var(--secondary-bg-color);
   padding: 5px;
   margin: 3px;
+  width: fit-content;
 }
 
 .Text_Data {
   font-weight: 800;
+  width: fit-content;
 }
 
 .SubTitle {
@@ -53,12 +55,14 @@ img[class^="img_"] {
   margin: 2px;
   color: var(--secondary-bg-color);
   background-color: var(--tierce-bg-color);
+  width: fit-content;
 }
 
 .Text_Data_Disable {
   color: var(--tierce-txt-color);
   background-color: var(--tierce-bg-color);
   margin: 2px;
+  width: fit-content;
 }
 
 .Text_Input {

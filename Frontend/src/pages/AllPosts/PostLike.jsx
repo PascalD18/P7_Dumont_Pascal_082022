@@ -34,11 +34,11 @@ function PostLike({ like, postId }) {
         <>
             <OnSelect handleClick={onClickLike}>
                 {resultLike === 0 ? (
-                    <img src="/Thumb up hollow.jpg" alt="thumb"
-                        className="SelectMouse"></img>
+                    <img src="/Thumb_up_hollow.jpg" alt="thumb"
+                        className="SelectMouse Thumb"></img>
                 ) : (
-                    <img src="/Thumb up green.jpg" alt="thumb"
-                        className=" img_Thumb SelectMouse"></img>
+                    <img src="/Thumb_up_green.jpg" alt="thumb"
+                        className="img_Thumb SelectMouse Thumb"></img>
                 )}
             </OnSelect>
             <p id={`Like{${postId}}`} className="A_Text_Like">{resultLike}</p>

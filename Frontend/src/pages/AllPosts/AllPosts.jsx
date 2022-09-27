@@ -44,10 +44,9 @@ const AllPosts = () => {
                                     <p className="Text_Data_Disable">{post.dateCreate}</p>
                                 </div>
                                 <label className="Label_Data_Disable" htmlFor="Email émetteur">Email émetteur</label>
-                                <p className="Text_Data_Disable">
+                                <p className="A_Text_Data_Disable">
                                     {usersList.find(el => el._id === post.userId).email}
                                 </p>
-
                                 {/*  // Appel le composant qui affichera ou non les boutons de modification et suppression */}
                                 <DisplayBtnUpDate typeUser={usersList.find(el => el._id === userId).typeUser}
                                     userConnect={userId} userPost={post.userId} post={post} postId={post._id} />
@@ -56,7 +55,7 @@ const AllPosts = () => {
                                 <img className="img_post" src={post.imageUrl} alt="illustration"></img>
                             </div>
                             <textarea id={post._id} disabled="disabled" 
-                                className="A_Textarea Textarea">
+                                className="A_Textarea">
                                     {post.description}
                                 </textarea>
                         </div>

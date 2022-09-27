@@ -45,7 +45,7 @@ function DisplayBtnUpdate({ typeUser, userConnect, userPost, post, postId }) {
     return (
         <div>
             {authDisplay === true && (
-                <>
+                <div className="A_Grp_ContDatas_ContEmis_ContBtns">
                     <button id={`M${postId}`} className="Btn_Listening"
                         data-post={JSON.stringify(post)}
                         onClick={onClickUpDatePost}
@@ -60,7 +60,7 @@ function DisplayBtnUpdate({ typeUser, userConnect, userPost, post, postId }) {
                             SUPPRESSION
                         </button>
                     </div>
-                </>
+                </div>
             )}
         </div>)
 }

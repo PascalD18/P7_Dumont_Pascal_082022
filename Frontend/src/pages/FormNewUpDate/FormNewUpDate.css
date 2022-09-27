@@ -16,7 +16,7 @@
 	justify-content: space-around;
 	border: 2px solid;
 	height: var(--Height-section-default);
-	background-color: cadetblue;
+	background-color: var( --secondary-bg-color);
 }
 
 .UN_GrpEmis {
