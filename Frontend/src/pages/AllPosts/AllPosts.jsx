@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import Banner from '../../components/Banner'
 import NavAllPosts from './NavAllPosts'
@@ -11,14 +12,17 @@ import '../../styles/index.css'
 
 // Affichage de tous les posts
 const AllPosts = () => {
+    const navigate = useNavigate()
     const [postsList, setPostsList] = useState([])
     const usersList = JSON.parse(sessionStorage.getItem('usersList'))
     const userId = sessionStorage.getItem('userId')
     const baseUrlBack = useGlobalState("baseUrlBack")
     const authBearer = useGlobalState('authBearer')
 
-
     useEffect((postsList) => {
+
+        if (authBearer[0] === '_') { navigate('/') }
+
         //1ére Requête de tous les postes
         const baseUrlPosts = `${baseUrlBack[0]}posts/`
         const headers = authBearer[0]
@@ -47,11 +51,18 @@ const AllPosts = () => {
                                         </div>
                                         <label className="Label_Data_Disable" htmlFor="Email émetteur">Email émetteur</label>
                                         <p className="A_Text_Data_Disable">
-                                            {usersList.find(el => el._id === post.userId).email}
+                                            {(usersList.filter(({ _id }) => _id === post.userId)).length === 0 ? (
+                                                'Utilisateur supprimé'
+                                            ) : (
+                                                usersList.find(el => el._id === post.userId).email
+                                            )}
                                         </p>
-                                        {/*  // Appel le composant qui affichera ou non les boutons de modification et suppression */}
-                                        <DisplayBtnUpDate typeUser={usersList.find(el => el._id === userId).typeUser}
-                                            userConnect={userId} userPost={post.userId} post={post} postId={post._id} />
+
+                                         {/*  // Appel le composant qui affichera ou non les boutons de modification et suppression */ }
+                                        {(usersList.filter(({ _id }) => _id === post.userId)).length !== 0 &&
+                                                (<DisplayBtnUpDate typeUser={usersList.find(el => el._id === userId).typeUser}
+                                                    userConnect={userId} userPost={post.userId} post={post} postId={post._id} />)
+                                        }
                                     </div>
                                     <div className="A_Grp_ContImg">
                                         <img className="img_post" src={post.imageUrl} alt="illustration"></img>
