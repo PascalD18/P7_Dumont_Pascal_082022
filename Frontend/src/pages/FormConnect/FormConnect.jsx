@@ -155,9 +155,6 @@ const FormConnect = () => {
     }
   }
 
-  const onClickDeconnect = (e) => {
-    navigate('/')
-  }
   return (
     <div>
       <div><Banner /></div>
@@ -173,9 +170,6 @@ const FormConnect = () => {
             </div>
           )
           }
-          <button className="Btn_Listening" onClick={onClickDeconnect}>
-            DÉCONNEXION
-          </button>
         </div>
         <div className="FC_GrpDatas">
           <div className="FC_GrpDatas_ContData">
