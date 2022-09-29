@@ -5,11 +5,7 @@ const { setGlobalState, useGlobalState } = createGlobalState({
             "Accept": `application/json`,
             "Accept-Language": `fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3`,
             "Content-type": `application/json; charset=utf-8`
-          },
-      typeForm: '_',
-      typeConnect: '_',
-      authHeader:'_',
-      authBearer:'_',
-      counter:0
+          }
+
 })
 export { useGlobalState, setGlobalState }

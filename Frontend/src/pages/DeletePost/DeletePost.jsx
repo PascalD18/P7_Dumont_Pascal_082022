@@ -6,12 +6,12 @@ import { useGlobalState } from '../../components/StateGlobal'
 function DeletePost() {
     const navigate = useNavigate()
     const baseUrlBack = useGlobalState('baseUrlBack')
-    const authHeader = useGlobalState('authHeader')
+    const authHeader=JSON.parse(sessionStorage.getItem('authHeader'))
     
     // Supprime un post
     useEffect(() => {
         const postId = sessionStorage.getItem('PostId')
-        const headers = authHeader[0]
+        const headers = authHeader
         const baseUrl = `${baseUrlBack[0]}posts/${postId}`
         axios.delete(baseUrl, { headers })
             .then(() => {

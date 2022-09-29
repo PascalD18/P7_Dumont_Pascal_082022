@@ -1,5 +1,6 @@
 const Post = require('../models/Post');
 const fs = require('fs');
+//const Dayjs= require( 'dayjs');
 //const bodyParser = require('body-parser')
 
 
@@ -116,7 +117,7 @@ exports.getOnePost = (req, res) => {
 
 // Lecture de tous les objets Post
 exports.getAllPosts = (req, res) => {
-  Post.find()
+ Post.find({}).sort({_id:-1})
     .then(post => res.status(200).json(post))
     .catch(error => res.status(400).json({ error: error }))
 }

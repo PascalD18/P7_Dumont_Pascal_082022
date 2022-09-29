@@ -17,15 +17,13 @@ const AllPosts = () => {
     const usersList = JSON.parse(sessionStorage.getItem('usersList'))
     const userId = sessionStorage.getItem('userId')
     const baseUrlBack = useGlobalState("baseUrlBack")
-    const authBearer = useGlobalState('authBearer')
+    const authBearer = JSON.parse(sessionStorage.getItem('authBearer'))
 
     useEffect((postsList) => {
 
-        if (authBearer[0] === '_') { navigate('/') }
-
         //1ére Requête de tous les postes
         const baseUrlPosts = `${baseUrlBack[0]}posts/`
-        const headers = authBearer[0]
+        const headers = authBearer
         axios.get(baseUrlPosts, { headers })
             .then((res) => {
                 setPostsList(res.data);
@@ -67,16 +65,15 @@ const AllPosts = () => {
                                     <div className="A_Grp_ContImg">
                                         <img className="img_post" src={post.imageUrl} alt="illustration"></img>
                                     </div>
-                                    <textarea id={post._id} disabled="disabled"
+                                    <textarea id={post._id} disabled="disabled" defaultValue={post.description}
                                         className="A_Textarea">
-                                        {post.description}
                                     </textarea>
                                 </div>
                                 <div className="A_Grp_ContLike">
                                     <div className="A_Grp_ContLike_ContThumb">
 
                                         {/*  // Appel le composant qui gère les likes */}
-                                        <PostLike like={post.likes} postId={post._id} />
+                                        <PostLike like={post.likes} postId={post._id} post={post} userId={userId}/>
                                     </div>
                                 </div>
                             </div>

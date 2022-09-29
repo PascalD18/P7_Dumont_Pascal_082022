@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useGlobalState } from '../../components/StateGlobal'
+import { setGlobalState, useGlobalState } from '../../components/StateGlobal'
 import axios from 'axios'
 import Banner from '../../components/Banner'
 import '../../styles/index.css'
@@ -8,22 +8,19 @@ import './FormConnect.css'
 
 const FormConnect = () => {
   const navigate = useNavigate()
-  //Réinitialise les variables globales
-  sessionStorage.clear('usersList')
-  sessionStorage.clear('userId')
-  sessionStorage.clear('Post')
+  const typeConnect = useGlobalState("typeConnect")
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const baseUrlBack = useGlobalState("baseUrlBack")
   const baseHeader = useGlobalState('baseHeader')
-  const typeConnect=localStorage.getItem('typeConnect')
-  sessionStorage.setItem('authNav', 'Unauthorized')
+  sessionStorage.setItem('authNav','Unauthorized')
 
   const onClickValidate = (e) => {
     e.preventDefault()
-    if (typeConnect === "Login") {
+    if (typeConnect[0] === "Login") {
 
       // **** CONNEXION ***
+
       const baseUrlLogin = `${baseUrlBack[0]}auth/login`
       const obj = {
         email: email,
@@ -40,22 +37,22 @@ const FormConnect = () => {
           const authBearer = {
             Authorization: `Bearer ${res.data.token}`
           }
-          sessionStorage.setItem('authBearer', JSON.stringify(authBearer))
+          setGlobalState('authBearer', authBearer)
           baseHeader[0].Authorization = `Bearer ${res.data.token}`
-          sessionStorage.setItem('authHeader', JSON.stringify(baseHeader[0]))
+          setGlobalState('authHeader', baseHeader[0])
           if (res.request.status === 200) {
             alert("Utilisateur logé")
           }
 
           //Requête et mémorisation de tous les utilisateurs         
           const baseUrlUsers = `${baseUrlBack[0]}auth/`
-          const headers = JSON.parse(sessionStorage.getItem('authHeader'))
+          const headers = baseHeader[0]
           axios.get(baseUrlUsers, { headers })
             .then((res) => {
               sessionStorage.setItem('usersList', JSON.stringify(res.data))
-
+             
               // Affichage de tous les posts
-              sessionStorage.setItem('authNav', 'OK')
+              sessionStorage.setItem('authNav','OK')
               navigate('/AllPosts')
             })
             .catch((err) => { alert(err) })
@@ -68,12 +65,12 @@ const FormConnect = () => {
           } else if (err.response.status === 429) {
             alert("Trop de tentatives: merci de patienter 2 mn pour cet utilisateur")
           } else {
-            if (err.response.data.message === undefined) {
-              alert(err.response.data.error)
-            } else {
-              alert(err.response.data.message)
+            if (err.response.data.message === undefined){
+               alert(err.response.data.error)
+            }else{
+                alert(err.response.data.message)
             }
-
+          
           }
         })
 
@@ -89,7 +86,7 @@ const FormConnect = () => {
         email: email,
         password: password
       }
-      // const headers = baseHeader[0]
+     // const headers = baseHeader[0]
       axios({
         method: 'post',
         //headers: headers,
@@ -117,17 +114,17 @@ const FormConnect = () => {
               const authBearer = {
                 Authorization: `Bearer ${res.data.token}`
               }
-               sessionStorage.setItem('authBearer', JSON.stringify(authBearer))
+              setGlobalState('authBearer', authBearer)
               baseHeader[0].Authorization = `Bearer ${res.data.token}`
-              sessionStorage.setItem('authHeader', JSON.stringify(baseHeader[0]))
+              setGlobalState('authHeader', baseHeader[0])
               if (res.request.status === 200) {
-                sessionStorage.setItem('authNav', 'OK')
+                sessionStorage.setItem('authNav','OK')
                 alert("Utilisateur créé")
               }
 
               //Requête et mémorisation de tous les utilisateurs
               const baseUrlUsers = `${baseUrlBack[0]}auth/`
-              const headers = JSON.parse(sessionStorage.getItem('authHeader'))
+              const headers = baseHeader[0]
               axios.get(baseUrlUsers, { headers })
                 .then((res) => {
                   sessionStorage.setItem('usersList', JSON.stringify(res.data))
@@ -157,21 +154,22 @@ const FormConnect = () => {
         })
     }
   }
-  const onClickConnect = (e) => {
-    localStorage.setItem('typeConnect', e.target.dataset.typeconnect)
-   navigate('/')
-  }
 
   return (
     <div>
       <div><Banner /></div>
       <div className="FC_Sect">
-        <div className="FC_GrpSubTitle">
-          {typeConnect === "Login"? (
-            <p className="SubTitle">CONNEXION</p>
+        <div className="FC_GrpNav">
+          {typeConnect[0] === "Login" ? (
+            <div className="H_ContSubTitle">
+              <p className="SubTitle">CONNEXION</p>
+            </div>
           ) : (
-            <p className="SubTitle">INSCRIPTION</p>
-          )}
+            <div className="H_ContSubTitle">
+              <p className="SubTitle">INSCRIPTION</p>
+            </div>
+          )
+          }
         </div>
         <div className="FC_GrpDatas">
           <div className="FC_GrpDatas_ContData">
@@ -199,19 +197,6 @@ const FormConnect = () => {
             <button className="Btn_Listening" onClick={onClickValidate}>
               Valider
             </button>
-            { typeConnect === "Login" ? (
-              <button className="Btn_Listening"
-                data-typeconnect="Inscription" onClick={onClickConnect}
-              >
-                Pour l' INSCRIPTION cliquez ici
-              </button>
-            ) : (
-              <button className="Btn_Listening"
-                data-typeconnect="Login" onClick={onClickConnect}
-              >
-                Pour la CONNEXION cliquez ici
-              </button>
-            )}
           </div>
         </div>
       </div>

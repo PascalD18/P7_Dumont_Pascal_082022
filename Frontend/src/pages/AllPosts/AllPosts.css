@@ -77,8 +77,21 @@
     height: 35%;
 }
 
-.Thumb {
+.ThumbG {
     border-radius: 25px;
+}
+
+.ThumbH {
+    position: relative;
+    top:-50px;
+    border-radius: 25px;
+}
+
+.Thumb_Hidden{
+    visibility: hidden;
+}
+.Thumb_Visible{
+    visibility:visible;
 }
 
 .A_Text_Data_Disable {
@@ -88,6 +101,8 @@
 }
 
 .A_Text_Like {
+    position: relative;
+    top:-50px;
     color:var( --secondary-txt-color);
     font-weight: 800;
     text-align: center;
@@ -101,6 +116,7 @@
     height: 150px;
     background-color: var( --secondary-bg-color);
 }
+
 
 @media screen and (max-width: 630px) {
     .A_Grp_ContDatas_ContEmis {

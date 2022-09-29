@@ -1,10 +1,10 @@
 import { useNavigate } from 'react-router-dom'
-import { useGlobalState } from '../../components/StateGlobal'
+//import { useGlobalState } from '../../components/StateGlobal'
 import '../../styles/index.css'
 
 function BannerUpDate() {
   const navigate = useNavigate()
-  const typeForm = useGlobalState("typeForm")
+  const typeForm = localStorage.getItem('typeForm')
   const HandleAllPosts = (e) => {
     navigate('/AllPosts')
   }
@@ -13,7 +13,7 @@ function BannerUpDate() {
   }
   return (
     <div>
-      {typeForm[0] === "UpDate" ? (
+      {typeForm === "UpDate" ? (
         <div className="FNav_Sect">
           <button className="Btn_Listening"
             onClick={HandleAllPosts}

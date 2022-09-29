@@ -6,12 +6,12 @@
 	align-items: center;
 	height:350px;
 }
-.FC_GrpNav{
-	display:flex;
-	flex-direction:row;
-	justify-content:space-around;
-	flex-wrap: wrap;
-	width:100%;
+.FC_GrpSubTitle {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	width: 80%;
+	
 }
 .FC_GrpDatas {
 	display: flex;
@@ -29,6 +29,7 @@
 .FC_GrpBtn {
 	width: 100%;
 	display: flex;
-	justify-content: flex-start;
+	justify-content: space-between;
 	align-items: center;
+	width:80%;
 }

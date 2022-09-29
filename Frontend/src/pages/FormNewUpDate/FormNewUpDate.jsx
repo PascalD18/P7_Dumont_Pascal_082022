@@ -10,21 +10,21 @@ import './FormNewUpDate.css'
 
 function FormPost() {
   const navigate = useNavigate()
-  const typeForm = useGlobalState('typeForm')
+  const typeForm = localStorage.getItem('typeForm')
   const post = JSON.parse(sessionStorage.getItem('Post'))
   const usersList = JSON.parse(sessionStorage.getItem('usersList'))
   const userId = sessionStorage.getItem('userId')
   const [image, setImage] = useState()
   const [imageDisplay, setImageDisplay] = useState()
   const [description, setDescription] = useState('')
-  const authHeader = useGlobalState('authHeader')
+  const authHeader = JSON.parse(sessionStorage.getItem('authHeader'))
   const baseUrlBack = useGlobalState('baseUrlBack')
 
 
   useEffect(() => {
     document.getElementById("description").innerHTML = post.description
     const elemBtnSubmit = document.getElementById('Btn_Submit')
-    if (typeForm[0] === 'NewPost') {
+    if (typeForm === 'NewPost') {
       if (imageDisplay === undefined) {
         elemBtnSubmit.className = "Btn_Disable"
         elemBtnSubmit.disabled = true
@@ -56,7 +56,7 @@ function FormPost() {
   const onClickValidate = (e) => {
     e.preventDefault()
 
-    if (typeForm[0] === 'NewPost') {
+    if (typeForm === 'NewPost') {
 
       // Sauvegarde d'un nouveau post
       const dateAct = Dayjs().format("YYYY-MM-DD")
@@ -69,7 +69,7 @@ function FormPost() {
       const postData = new FormData()
       postData.append("post", postLinea)
       postData.append('image', image)
-      const headers = authHeader[0]
+      const headers = authHeader
       axios.post(baseUrl, postData, { headers })
         .then((res) => {
           if (res.request.status === 201) {
@@ -86,15 +86,13 @@ function FormPost() {
         description: document.getElementById("description").defaultValue
       }
       const baseUrl = `${baseUrlBack[0]}posts/${post._id}`
-      const headers = authHeader[0]
+      const headers = authHeader
       if (image === undefined) {
 
         // Sans l'image
         axios.put(baseUrl, postJson, { headers })
           .then((res) => {
-            if (res.request.status === 200) {
               navigate('/AllPosts')
-            }
           })
           .catch((err) => { alert(err) })
       } else {
@@ -137,16 +135,18 @@ function FormPost() {
           </div>
           <div className="UN_GrpEmis">
             <div className="UN_GrpEmis_ContDatas">
+            {(typeForm !== "NewPost" && typeForm !== "_" ) && (
               <div className="UN_GrpEmis_ContDatas_Data">
                 <label className="UN_Label_Data Label_Data" htmlFor="Date">Date d'émission</label>
                 <p ><span className="UN_Text_Data Text_Data">{post.dateCreate}</span></p>
               </div>
+              )}
               <div className="UN_GrpEmis_ContDatas_Data">
                 <label className="UN_Label_Data Label_Data" htmlFor="Email">Email Utilisateur</label>
-                {typeForm[0] === "NewPost" ? (
-                  <p ><span className="UN_Text_Data Text_Data"> {usersList.find(el => el._id === userId).email}</span></p>
-                ) : (
+                {(typeForm !== "NewPost" && typeForm !== "_" ) ? (
                   <p ><span className="UN_Text_Data Text_Data"> {usersList.find(el => el._id === post.userId).email}</span></p>
+                ) : (
+                  <p ><span className="UN_Text_Data Text_Data"> {usersList.find(el => el._id === userId).email}</span></p>
                 )}
               </div>
             </div>

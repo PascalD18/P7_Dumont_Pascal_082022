@@ -10,7 +10,7 @@ function NavAllPosts() {
   const onClickHandler = (e) => {
     const nav = `${e.target.dataset.nav}`
     if (nav === `/`) { navigate(nav) }
-   setGlobalState('typeForm','NewPost')
+   localStorage.setItem('typeForm','NewPost')
     const dateAct = Dayjs().format('YYYY-MM-DD')
     const post = {
       dateCreate: dateAct,

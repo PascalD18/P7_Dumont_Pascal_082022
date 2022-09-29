@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useEffect } from 'react'
-import { setGlobalState } from '../../components/StateGlobal'
+//import { setGlobalState } from '../../components/StateGlobal'
 
 function DisplayBtnUpdate({ typeUser, userConnect, userPost, post, postId }) {
     const navigate = useNavigate()
@@ -29,7 +29,7 @@ function DisplayBtnUpdate({ typeUser, userConnect, userPost, post, postId }) {
     const onClickUpDatePost = (e) => {
         e.preventDefault()
         sessionStorage.setItem('Post', e.target.dataset.post)
-        setGlobalState('typeForm', 'UpDate')
+        localStorage.setItem('typeForm', 'UpDate')
         navigate('/FormNewUpDate')
     }
     const onClickDeletePost = (e) => {
