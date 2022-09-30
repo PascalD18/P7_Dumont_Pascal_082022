@@ -1,7 +1,7 @@
 import { Navigate } from 'react-router-dom'
 const PrivateRoute = ({ children }) => {
   const authNav=sessionStorage.getItem('authNav')
-  if (authNav === 'Ok') {
+  if (authNav !== 'OK') {
     alert("Merci de vous reconnecter.")
     return <Navigate to="/" />
   }

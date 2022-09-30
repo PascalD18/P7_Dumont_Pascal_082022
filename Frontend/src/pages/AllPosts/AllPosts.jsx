@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import Banner from '../../components/Banner'
 import NavAllPosts from './NavAllPosts'
@@ -12,7 +11,6 @@ import '../../styles/index.css'
 
 // Affichage de tous les posts
 const AllPosts = () => {
-    const navigate = useNavigate()
     const [postsList, setPostsList] = useState([])
     const usersList = JSON.parse(sessionStorage.getItem('usersList'))
     const userId = sessionStorage.getItem('userId')
@@ -56,10 +54,10 @@ const AllPosts = () => {
                                             )}
                                         </p>
 
-                                         {/*  // Appel le composant qui affichera ou non les boutons de modification et suppression */ }
+                                        {/*  // Appel le composant qui affichera ou non les boutons de modification et suppression */}
                                         {(usersList.filter(({ _id }) => _id === post.userId)).length !== 0 &&
-                                                (<DisplayBtnUpDate typeUser={usersList.find(el => el._id === userId).typeUser}
-                                                    userConnect={userId} userPost={post.userId} post={post} postId={post._id} />)
+                                            (<DisplayBtnUpDate typeUser={usersList.find(el => el._id === userId).typeUser}
+                                                userConnect={userId} userPost={post.userId} post={post} postId={post._id} />)
                                         }
                                     </div>
                                     <div className="A_Grp_ContImg">
@@ -73,7 +71,7 @@ const AllPosts = () => {
                                     <div className="A_Grp_ContLike_ContThumb">
 
                                         {/*  // Appel le composant qui gère les likes */}
-                                        <PostLike like={post.likes} postId={post._id} post={post} userId={userId}/>
+                                        <PostLike like={post.likes} postId={post._id} post={post} userId={userId} />
                                     </div>
                                 </div>
                             </div>
