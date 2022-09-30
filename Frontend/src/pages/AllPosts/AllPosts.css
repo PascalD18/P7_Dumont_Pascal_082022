@@ -78,12 +78,15 @@
 }
 
 .ThumbG {
+    position: relative;
+    left: 10px;
     border-radius: 25px;
 }
 
 .ThumbH {
     position: relative;
     top:-50px;
+    left:10px;
     border-radius: 25px;
 }
 
