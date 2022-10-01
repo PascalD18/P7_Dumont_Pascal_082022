@@ -3,7 +3,7 @@ import { useState } from 'react'
 import axios from 'axios'
 import OnSelect from "../../components/OnSelect"
 import { useGlobalState } from '../../components/StateGlobal'
-import { useRouteLoaderData } from 'react-router-dom'
+//import { useRouteLoaderData } from 'react-router-dom'
 
 function PostLike({ like, postId, post, userId }) {
 

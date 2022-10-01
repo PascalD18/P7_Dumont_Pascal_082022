@@ -71,7 +71,7 @@ const AllPosts = () => {
                                     <div className="A_Grp_ContLike_ContThumb">
 
                                         {/*  // Appel le composant qui gère les likes */}
-                                        <PostLike like={post.likes} postId={post._id} post={post} userId={userId} />
+                                        <PostLike like={post.likes} postId={post._id} post={post} userId={post.userId} />
                                     </div>
                                 </div>
                             </div>
