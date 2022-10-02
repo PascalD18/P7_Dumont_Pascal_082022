@@ -53,7 +53,6 @@ const AllPosts = () => {
                                                 usersList.find(el => el._id === post.userId).email
                                             )}
                                         </p>
-
                                         {/*  // Appel le composant qui affichera ou non les boutons de modification et suppression */}
                                         {(usersList.filter(({ _id }) => _id === post.userId)).length !== 0 &&
                                             (<DisplayBtnUpDate typeUser={usersList.find(el => el._id === userId).typeUser}
@@ -71,7 +70,7 @@ const AllPosts = () => {
                                     <div className="A_Grp_ContLike_ContThumb">
 
                                         {/*  // Appel le composant qui gère les likes */}
-                                        <PostLike like={post.likes} postId={post._id} post={post} userId={post.userId} />
+                                        <PostLike like={post.likes} postId={post._id} post={post} userId={userId} />
                                     </div>
                                 </div>
                             </div>
